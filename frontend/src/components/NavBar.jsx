@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Disclosure } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
@@ -8,8 +8,11 @@ function classNames(...classes) {
 }
 
 export default function NavBar() {
-  const [activeLink, setActiveLink] = useState('/feed');
+  
+  const location = useLocation();
   const navigate = useNavigate();
+
+  const [activeLink, setActiveLink] = useState(location.pathname);
 
   const handleLinkClick = (link, event) => {
     event.preventDefault();  // Prevent the default link behavior

@@ -5,20 +5,29 @@ import FeedPage from '@/pages/FeedPage';
 import PhotographyWorksPage from '@/pages/PhotographyWorksPage';
 import TechProjectsPage from '@/pages/TechProjectsPage';
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
+
+import PageAnimation from '@/animations/PageAnimation';
+import { AnimatePresence } from "framer-motion";
 
 export default function AppRoutes() {
+
+  const location = useLocation();
+
   return (
-    // <Router>
-      <Routes>
-        <Route path="/" element={<FeedPage />} />
-        <Route path="/feed" element={<FeedPage />} />
-        <Route path="/biography" element={<BiographyPage />} />
-        <Route path="/photography-works" element={<PhotographyWorksPage />} />
-        <Route path="/essays-reviews" element={<EssaysReviewsPage />} />
-        <Route path="/tech-projects" element={<TechProjectsPage />} />
-        <Route path="/contact" element={<ContactPage />} />
+
+    <>
+    <AnimatePresence mode="wait">
+      <Routes key={location.pathname} location={location.pathname}>
+        <Route path="/" element={<PageAnimation><FeedPage /></PageAnimation>} />
+        <Route path="/feed" element={<PageAnimation><FeedPage /></PageAnimation>} />
+        <Route path="/biography" element={<PageAnimation><BiographyPage /></PageAnimation>} />
+        <Route path="/photography-works" element={<PageAnimation><PhotographyWorksPage /></PageAnimation>} />
+        <Route path="/essays-reviews" element={<PageAnimation><EssaysReviewsPage /></PageAnimation>} />
+        <Route path="/tech-projects" element={<PageAnimation><TechProjectsPage /></PageAnimation>} />
+        <Route path="/contact" element={<PageAnimation><ContactPage /></PageAnimation>} />
       </Routes>
-    // </Router>
+    </AnimatePresence>
+    </>
   );
 }
