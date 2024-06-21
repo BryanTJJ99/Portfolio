@@ -24,31 +24,27 @@ const getIconDisplayName = (iconName) => {
 function TechProjectCard({ imgSrc, title, projectLink, description, icons }) {
   const [isModalOpen, setModalOpen] = useState(false);
 
-    const toggleModal = () => {
+  const toggleModal = () => {
     setModalOpen(!isModalOpen);
-        };
-    
-    const handleButtonClick = () => {
-    if (projectLink) {
-        window.open(projectLink, '_blank');
-    }
-
   };
 
-  
+  const handleButtonClick = () => {
+    if (projectLink) {
+      window.open(projectLink, '_blank');
+    }
+  };
+
   return (
-    <div>
-      <div>
-        <div onClick={toggleModal} className="aspect-h-2 aspect-w-3 w-full overflow-hidden rounded-lg">
-          <img src={imgSrc} className="h-full w-full object-cover object-center" />
-        </div>
-        <p className="mt-8 text-base text-gray-500">
-          {title}
-        </p>
+    <div className="relative hover:cursor-pointer transition-transform duration-300 hover:scale-105">
+      <div onClick={toggleModal} className="aspect-h-2 aspect-w-3 w-full overflow-hidden rounded-lg">
+        <img src={imgSrc} className="h-full w-full object-cover object-center" />
       </div>
+      <p className="mt-8 text-base text-gray-500">
+        {title}
+      </p>
 
       <Transition appear show={isModalOpen}>
-        <Dialog as="div" className="relative z-10 focus:outline-none" onClose={toggleModal}>
+        <Dialog as="div" className="fixed inset-0 z-50 focus:outline-none" onClose={toggleModal}>
           {/* Darkens the background as modal appears */}
           <TransitionChild
             enter="ease-out duration-300"
@@ -62,15 +58,15 @@ function TechProjectCard({ imgSrc, title, projectLink, description, icons }) {
           </TransitionChild>
 
           {/* Modal */}
-          <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+          <div className="fixed inset-0 z-50 w-screen overflow-y-auto">
             <div className="flex min-h-full items-center justify-center p-4">
               <TransitionChild
                 enter="ease-out duration-300"
-                enterFrom="opacity-0 transform-[scale(95%)]"
-                enterTo="opacity-100 transform-[scale(100%)]"
+                enterFrom="opacity-0 transform scale-95"
+                enterTo="opacity-100 transform scale-100"
                 leave="ease-in duration-200"
-                leaveFrom="opacity-100 transform-[scale(100%)]"
-                leaveTo="opacity-0 transform-[scale(95%)]"
+                leaveFrom="opacity-100 transform scale-100"
+                leaveTo="opacity-0 transform scale-95"
               >
                 <DialogPanel className="w-full max-w-4xl rounded-xl bg-white p-6 backdrop-blur-2xl">
                   <DialogTitle as="h1" className="text-base/1 font-medium">

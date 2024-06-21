@@ -1,3 +1,4 @@
+import AlbumPage from '@/pages/AlbumPage'; // Example sub-page
 import BiographyPage from '@/pages/BiographyPage';
 import ContactPage from '@/pages/ContactPage';
 import EssaysReviewsPage from '@/pages/EssaysReviewsPage';
@@ -7,27 +8,60 @@ import TechProjectsPage from '@/pages/TechProjectsPage';
 import React from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
-import PageAnimation from '@/animations/PageAnimation';
-import { AnimatePresence } from "framer-motion";
+import FadeAnimation from '@/animations/FadeAnimation';
+import SlideAnimation from '@/animations/SlideAnimation';
+import { AnimatePresence } from 'framer-motion';
 
 export default function AppRoutes() {
-
   const location = useLocation();
 
-  return (
+  // Determine if the current route should have page animation
+  const shouldAnimate = (path) => {
+    // Add more conditions if needed
+    const noAnimationPaths = [
+      '/photography-works/dark-line-the-thames-estuary', // Example sub-page path
+      // Add more paths that shouldn't have animation
+    ];
+    return !noAnimationPaths.includes(path);
+  };
 
-    <>
+  return (
     <AnimatePresence mode="wait">
       <Routes key={location.pathname} location={location.pathname}>
-        <Route path="/" element={<PageAnimation><FeedPage /></PageAnimation>} />
-        <Route path="/feed" element={<PageAnimation><FeedPage /></PageAnimation>} />
-        <Route path="/biography" element={<PageAnimation><BiographyPage /></PageAnimation>} />
-        <Route path="/photography-works" element={<PageAnimation><PhotographyWorksPage /></PageAnimation>} />
-        <Route path="/essays-reviews" element={<PageAnimation><EssaysReviewsPage /></PageAnimation>} />
-        <Route path="/tech-projects" element={<PageAnimation><TechProjectsPage /></PageAnimation>} />
-        <Route path="/contact" element={<PageAnimation><ContactPage /></PageAnimation>} />
+        <Route
+          path="/"
+          element={shouldAnimate(location.pathname) ? <SlideAnimation><FeedPage /></SlideAnimation> : <FeedPage />}
+        />
+        <Route
+          path="/feed"
+          element={shouldAnimate(location.pathname) ? <SlideAnimation><FeedPage /></SlideAnimation> : <FeedPage />}
+        />
+        <Route
+          path="/biography"
+          element={shouldAnimate(location.pathname) ? <SlideAnimation><BiographyPage /></SlideAnimation> : <BiographyPage />}
+        />
+        <Route
+          path="/photography-works"
+          element={shouldAnimate(location.pathname) ? <SlideAnimation><PhotographyWorksPage /></SlideAnimation> : <PhotographyWorksPage />}
+        />
+        <Route
+          path="/essays-reviews"
+          element={shouldAnimate(location.pathname) ? <SlideAnimation><EssaysReviewsPage /></SlideAnimation> : <EssaysReviewsPage />}
+        />
+        <Route
+          path="/tech-projects"
+          element={shouldAnimate(location.pathname) ? <SlideAnimation><TechProjectsPage /></SlideAnimation> : <TechProjectsPage />}
+        />
+        <Route
+          path="/contact"
+          element={shouldAnimate(location.pathname) ? <SlideAnimation><ContactPage /></SlideAnimation> : <ContactPage />}
+        />
+        <Route
+          path="/photography-works/dark-line-the-thames-estuary"
+          element={<FadeAnimation><AlbumPage /></FadeAnimation>} // No animation for this route
+        />
+        {/* Add more routes as needed */}
       </Routes>
     </AnimatePresence>
-    </>
   );
 }

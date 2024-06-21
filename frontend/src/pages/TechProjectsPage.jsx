@@ -3,9 +3,9 @@ import React from 'react';
 
 function TechProjectsPage() {
   return (
-    <div>
+    <div className='mt-10 p-3'>
       
-      <div className="mt-16 grid grid-cols-1 gap-y-16 lg:grid-cols-3 lg:gap-x-8">
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <TechProjectCard
           imgSrc="https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg"
           title="Machine Learning in Production (CMU 17-445)"
