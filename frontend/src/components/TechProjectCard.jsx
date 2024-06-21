@@ -38,10 +38,11 @@ function TechProjectCard({ imgSrc, title, projectLink, description, icons }) {
     <div className="relative hover:cursor-pointer transition-transform duration-300 hover:scale-105">
       <div onClick={toggleModal} className="aspect-h-2 aspect-w-3 w-full overflow-hidden rounded-lg">
         <img src={imgSrc} className="h-full w-full object-cover object-center" />
+        <p className="mt-8 text-base text-gray-500">
+          {title}
+        </p>
       </div>
-      <p className="mt-8 text-base text-gray-500">
-        {title}
-      </p>
+
 
       <Transition appear show={isModalOpen}>
         <Dialog as="div" className="fixed inset-0 z-50 focus:outline-none" onClose={toggleModal}>
