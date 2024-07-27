@@ -1,5 +1,5 @@
+import PhotoAlbumCard from '@/components/PhotoAlbumCard';
 import React from 'react';
-import PhotoAlbumCard from '../components/PhotoAlbumCard';
 
 function PhotographyWorksPage() {
   return (

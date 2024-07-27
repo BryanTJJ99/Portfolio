@@ -1,3 +1,4 @@
+import MachineLearningInproduction from '@/assets/images/tech-projects/MachineLearningInProduction.png';
 import TechProjectCard from '@/components/TechProjectCard';
 import React from 'react';
 
@@ -7,7 +8,8 @@ function TechProjectsPage() {
       
       <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <TechProjectCard
-          imgSrc="https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg"
+          imgSrc={MachineLearningInproduction}
+          imgSrcModal={MachineLearningInproduction}
           title="Machine Learning in Production (CMU 17-445)"
           projectLink="https://github.com/cmu-seai/group-project-s24-caped-crusaders"
           description="End-to-end development of machine learning applications, including production testing, deployment pipelines, and robust data infrastructure for model learning and serving."

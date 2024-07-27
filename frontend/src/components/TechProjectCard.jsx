@@ -21,7 +21,7 @@ const getIconDisplayName = (iconName) => {
   return iconName.replace(prefixRegex, '');
 };
 
-function TechProjectCard({ imgSrc, title, projectLink, description, icons }) {
+function TechProjectCard({ imgSrc, imgSrcModal, title, projectLink, description, icons }) {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const toggleModal = () => {
@@ -75,6 +75,7 @@ function TechProjectCard({ imgSrc, title, projectLink, description, icons }) {
                   </DialogTitle>
                   <p className="mt-2 text-sm/6">
                     {description}
+                    <img src={imgSrcModal} className="" />
                   </p>
 
                   <DialogTitle as="h1" className="text-base/1 font-medium mt-6">
@@ -115,6 +116,7 @@ function TechProjectCard({ imgSrc, title, projectLink, description, icons }) {
 
 TechProjectCard.propTypes = {
   imgSrc: PropTypes.string.isRequired,
+  imgSrcModal: PropTypes.string,
   title: PropTypes.string.isRequired,
   projectLink: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,

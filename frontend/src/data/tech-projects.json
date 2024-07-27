@@ -1,0 +1,44 @@
+[
+    {
+      "id": 1,
+      "imgSrc": "@/assets/images/tech-projects/MachineLearningInProduction.png",
+      "imgSrcModal": "@/assets/images/tech-projects/MachineLearningInProduction.png",
+      "title": "Machine Learning in Production (CMU 17-445)",
+      "projectLink": "https://github.com/cmu-seai/group-project-s24-caped-crusaders",
+      "description": "End-to-end development of machine learning applications, including production testing, deployment pipelines, and robust data infrastructure for model learning and serving.",
+      "icons": ["SiApachekafka", "FaDocker", "FaFlask", "SiGrafana", "SiApacheairflow"]
+    },
+    {
+      "id": 2,
+      "imgSrc": "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
+      "title": "The 20L model has enough space for 370 candy bars, 6 cylinders of chips, 1220 standard gumballs, or any combination of on-the-go treats that your heart desires. Yes, we did the math.",
+      "projectLink": "",
+      "description": "lorem ipsum",
+      "icons": ["FaLinkedin", "FaInstagram", "FaGithub"]
+    },
+    {
+      "id": 3,
+      "imgSrc": "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
+      "title": "The 20L model has enough space for 370 candy bars, 6 cylinders of chips, 1220 standard gumballs, or any combination of on-the-go treats that your heart desires. Yes, we did the math.",
+      "projectLink": "",
+      "description": "lorem ipsum",
+      "icons": ["FaLinkedin", "FaInstagram", "FaGithub"]
+    },
+    {
+      "id": 4,
+      "imgSrc": "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
+      "title": "The 20L model has enough space for 370 candy bars, 6 cylinders of chips, 1220 standard gumballs, or any combination of on-the-go treats that your heart desires. Yes, we did the math.",
+      "projectLink": "",
+      "description": "lorem ipsum",
+      "icons": ["FaLinkedin", "FaInstagram", "FaGithub"]
+    },
+    {
+      "id": 5,
+      "imgSrc": "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
+      "title": "The 20L model has enough space for 370 candy bars, 6 cylinders of chips, 1220 standard gumballs, or any combination of on-the-go treats that your heart desires. Yes, we did the math.",
+      "projectLink": "",
+      "description": "lorem ipsum",
+      "icons": ["FaLinkedin", "FaInstagram", "FaGithub"]
+    }
+  ]
+  

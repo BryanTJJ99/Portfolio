@@ -40,3 +40,16 @@
 .read-the-docs {
   color: #888;
 }
+
+@keyframes encircle {
+  0% {
+    border-color: transparent;
+  }
+  100% {
+    border-color: currentColor;
+  }
+}
+
+.hover\\:animate-encircle:hover {
+  animation: encircle 0.3s forwards;
+}
