@@ -26,9 +26,15 @@
         "subHeader": "Description for another album.",
         "description": "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
         "photos": [
-            { "id": 2, "src": "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg", "title": "Untitled II, London, 23.03.2020 - 26.05.2020" },
-          { "id": 1, "src": "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg", "title": "Untitled I, London, 23.03.2020 - 26.05.2020" },
-          { "id": 2, "src": "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg", "title": "Untitled II, London, 23.03.2020 - 26.05.2020" }
+            { "id": 1, "src": "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg", "title": "Untitled II, London, 23.03.2020 - 26.05.2020" },
+          { "id": 2, "src": "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg", "title": "Untitled I, London, 23.03.2020 - 26.05.2020" },
+          { "id": 3, "src": "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg", "title": "Untitled II, London, 23.03.2020 - 26.05.2020" },
+          { "id": 4, "src": "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg", "title": "Untitled II, London, 23.03.2020 - 26.05.2020" },
+          { "id": 5, "src": "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg", "title": "Untitled II, London, 23.03.2020 - 26.05.2020" },
+          { "id": 6, "src": "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg", "title": "Untitled II, London, 23.03.2020 - 26.05.2020" },
+          { "id": 7, "src": "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg", "title": "Untitled II, London, 23.03.2020 - 26.05.2020" },
+          { "id": 8, "src": "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg", "title": "Untitled II, London, 23.03.2020 - 26.05.2020" },
+          { "id": 9, "src": "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg", "title": "Untitled II, London, 23.03.2020 - 26.05.2020" }
         ]
       }
     }

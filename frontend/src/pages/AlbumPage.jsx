@@ -86,7 +86,7 @@ function AlbumPage() {
         <br />
         <p className='text-lg font-bold'>{album.subHeader}</p>
         <br />
-        <p className='opacity-60 text-md mb-20'>{album.description}</p>
+        <p className='opacity-60 text-md mb-20 lg:w-3/5'>{album.description}</p>
       </div>
     </>
   );
