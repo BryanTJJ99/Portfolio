@@ -19,7 +19,6 @@ export default function AppRoutes() {
   const shouldAnimate = (path) => {
     // Add more conditions if needed
     const noAnimationPaths = [
-      '/photography-works/dark-line-the-thames-estuary', // Example sub-page path
       // Add more paths that shouldn't have animation
     ];
     return !noAnimationPaths.includes(path);
@@ -27,7 +26,7 @@ export default function AppRoutes() {
 
   return (
     <AnimatePresence mode="wait">
-      <Routes key={location.pathname} location={location.pathname}>
+      <Routes key={location.pathname} location={location}>
         <Route
           path="/"
           element={shouldAnimate(location.pathname) ? <SlideAnimation><FeedPage /></SlideAnimation> : <FeedPage />}
@@ -57,8 +56,8 @@ export default function AppRoutes() {
           element={shouldAnimate(location.pathname) ? <SlideAnimation><ContactPage /></SlideAnimation> : <ContactPage />}
         />
         <Route
-          path="/photography-works/dark-line-the-thames-estuary"
-          element={<FadeAnimation><AlbumPage /></FadeAnimation>} // No animation for this route
+          path="/photography-works/:albumId"
+          element={<FadeAnimation><AlbumPage /></FadeAnimation>}
         />
         {/* Add more routes as needed */}
       </Routes>

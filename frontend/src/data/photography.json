@@ -1,0 +1,36 @@
+{
+    "photoAlbums": [
+      {
+        "id": "dark-line-thames-estuary",
+        "title": "Dark Line – The Thames Estuary",
+        "link": "/photography-works/dark-line-thames-estuary"
+      },
+      {
+        "id": "another-album",
+        "title": "Another Album",
+        "link": "/photography-works/another-album"
+      }
+    ],
+    "albumDetails": {
+      "dark-line-thames-estuary": {
+        "title": "Dark Line – The Thames Estuary",
+        "subHeader": "A response to the dark times in society in collaboration with Prix Pictet.",
+        "description": "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
+        "photos": [
+          { "id": 1, "src": "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg", "title": "Untitled I, London, 23.03.2020 - 26.05.2020" },
+          { "id": 2, "src": "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg", "title": "Untitled II, London, 23.03.2020 - 26.05.2020" }
+        ]
+      },
+      "another-album": {
+        "title": "Another Album",
+        "subHeader": "Description for another album.",
+        "description": "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
+        "photos": [
+            { "id": 2, "src": "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg", "title": "Untitled II, London, 23.03.2020 - 26.05.2020" },
+          { "id": 1, "src": "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg", "title": "Untitled I, London, 23.03.2020 - 26.05.2020" },
+          { "id": 2, "src": "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg", "title": "Untitled II, London, 23.03.2020 - 26.05.2020" }
+        ]
+      }
+    }
+  }
+  
