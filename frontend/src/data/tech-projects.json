@@ -11,34 +11,50 @@
     {
       "id": 2,
       "imgSrc": "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
-      "title": "The 20L model has enough space for 370 candy bars, 6 cylinders of chips, 1220 standard gumballs, or any combination of on-the-go treats that your heart desires. Yes, we did the math.",
+      "title": "Big Data Architecture",
       "projectLink": "",
-      "description": "lorem ipsum",
-      "icons": ["FaLinkedin", "FaInstagram", "FaGithub"]
+      "description": "Industry collaboration project with PropertyGuru on building a sustainable data architecture for retail rental insights using AWS services",
+      "icons": ["SiAwsamplify", "SiAmazonredshift", "SiAmazoncomprehend", "SiAmazons3", "SiAwslambda", "SiGooglecloudstorage", "SiGooglebigquery"]
     },
     {
       "id": 3,
       "imgSrc": "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
-      "title": "The 20L model has enough space for 370 candy bars, 6 cylinders of chips, 1220 standard gumballs, or any combination of on-the-go treats that your heart desires. Yes, we did the math.",
+      "title": "Web Application Development - Community Composting",
       "projectLink": "",
-      "description": "lorem ipsum",
-      "icons": ["FaLinkedin", "FaInstagram", "FaGithub"]
+      "description": "Built a frontend webpage titled BlackGold, which is a platform that aims to organically create composting communities across different apartments and regions in Singapore",
+      "icons": ["FaVuejs","SiTailwindcss","FaNodeJs"]
     },
     {
       "id": 4,
       "imgSrc": "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
-      "title": "The 20L model has enough space for 370 candy bars, 6 cylinders of chips, 1220 standard gumballs, or any combination of on-the-go treats that your heart desires. Yes, we did the math.",
-      "projectLink": "",
-      "description": "lorem ipsum",
-      "icons": ["FaLinkedin", "FaInstagram", "FaGithub"]
+      "title": "Object Oriented Programming - Corporate Form Application",
+      "projectLink": "https://github.com/BryanTJJ99/OOP_FormApp",
+      "description": "Created a CRUD form application for a sponsoring client using Springboot for the backend and React for the frontend. The application is designed to manage corporate forms and their respective data.",
+      "icons": ["SiSpringboot", "FaReact", "SiMongodb"]
     },
     {
       "id": 5,
       "imgSrc": "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
-      "title": "The 20L model has enough space for 370 candy bars, 6 cylinders of chips, 1220 standard gumballs, or any combination of on-the-go treats that your heart desires. Yes, we did the math.",
+      "title": "Microservices Architecture - SecondChance Recycling System",
       "projectLink": "",
-      "description": "lorem ipsum",
-      "icons": ["FaLinkedin", "FaInstagram", "FaGithub"]
-    }
+      "description": "Built a full-stack app titled SecondChance, a resource management platform to track and reuse existing resources, reducing costs and promoting circular economy while quantifying carbon emissions reduction. Developed based on the principles of the microservices architecture.",
+      "icons": ["FaDocker", "FaFlask", "SiRabbitmq", "FaVuejs", "SiMongodb"]
+    },
+    {
+        "id": 6,
+        "imgSrc": "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
+        "title": "Software Product Management",
+        "projectLink": "",
+        "description": "Analysed land cover change in green spaces in Singapore’s Jurong Lake District using Sentinel-2 data, and recommend suitable strategies to reduce forested land loss.",
+        "icons": ["SiJira", "SiScrumalliance", "SiGithubactions", "FaGit"]
+      },
+    {
+        "id": 7,
+        "imgSrc": "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
+        "title": "Geographical Information System - Satellite Land Cover Change Detection",
+        "projectLink": "https://urbansensingjld.netlify.app/",
+        "description": "Analysed land cover change in green spaces in Singapore’s Jurong Lake District using Sentinel-2 data, and recommend suitable strategies to reduce forested land loss.",
+        "icons": ["SiQgis", "SiRstudio", "SiMysql"]
+      }
   ]
   

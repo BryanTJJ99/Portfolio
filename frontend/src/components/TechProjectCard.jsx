@@ -73,7 +73,7 @@ function TechProjectCard({ imgSrc, imgSrcModal, title, projectLink, description,
                   <DialogTitle as="h1" className="text-base/1 font-medium">
                     Description
                   </DialogTitle>
-                  <p className="mt-2 text-sm/6">
+                  <p className="my-2 ">
                     {description}
                     <img src={imgSrcModal} className="" />
                   </p>
