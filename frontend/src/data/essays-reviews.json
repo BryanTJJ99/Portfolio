@@ -1,11 +1,15 @@
 [
     {
       "id": "link1",
-      "title": "Link 1"
+      "title": "Arte: Interview with Nadav Kander, guest artist for the Portrait(s) Vichy Festival, France",
+      "year": 2024,
+      "type": "Film"
     },
     {
       "id": "link2",
-      "title": "Link 2"
+      "title": "British Journal of Photography: In the Studio",
+      "year": 2023,
+      "type": "Text"
     }
   ]
   
