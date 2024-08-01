@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import essaysReviews from '@/data/essays-reviews.json';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import SlideAnimation from '@/animations/SlideAnimation';
 
 // Import markdown files dynamically with updated query option
 const markdownFiles = import.meta.glob('/src/essays-reviews-markdown/*.md', { query: '?raw', import: 'default' });
@@ -98,6 +99,7 @@ function EssaysReviewsPage() {
           </div>
         </div>
         <div className="flex-1 p-2 border-gray-300 relative text-left">
+          <SlideAnimation key={markdownContent}>
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}
@@ -110,6 +112,7 @@ function EssaysReviewsPage() {
           >
             {markdownContent}
           </ReactMarkdown>
+          </SlideAnimation>
           <div className="absolute top-0 bottom-0 left-0 w-0.5 bg-gray-300 opacity-0 transition-opacity duration-300 ease-in-out md:group-hover:opacity-100"></div>
         </div>
       </div>
