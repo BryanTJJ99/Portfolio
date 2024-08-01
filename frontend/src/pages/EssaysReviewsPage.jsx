@@ -11,6 +11,7 @@ function EssaysReviewsPage() {
   const [markdownContent, setMarkdownContent] = useState('');
   const [links, setLinks] = useState([]);
   const [filter, setFilter] = useState('All');
+  const [activeLink, setActiveLink] = useState(null);
 
   useEffect(() => {
     // Load links from the JSON file
@@ -39,6 +40,7 @@ function EssaysReviewsPage() {
   const handleLinkClick = async (link) => {
     const content = await fetchMarkdownContent(link);
     setMarkdownContent(content);
+    setActiveLink(link);
   };
 
   const filteredLinks = filter === 'All' ? links : links.filter(link => link.type === filter);
@@ -80,7 +82,9 @@ function EssaysReviewsPage() {
                     <button
                       key={link.id}
                       onClick={() => handleLinkClick(link.id)}
-                      className="block border-b py-2 text-left w-full text-blue-500 hover:underline last:border-b-0"
+                      // className="block border-b py-2 text-left w-full text-blue-500 hover:underline last:border-b-0"
+                      className={`block border-b py-2 text-left w-full last:border-b-0 transition-colors duration-200 ease-in-out ${activeLink === link.id ? 'font-bold text-black' : 'text-gray-500 hover:text-gray-700 focus:text-black'}`}
+                      style={{ textDecoration: 'none' }}
                     >
                       <div className="flex justify-between">
                         <div>{link.title}</div>
