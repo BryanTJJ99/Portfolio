@@ -4,8 +4,9 @@ import essaysReviews from '@/data/essays-reviews.json';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import SlideAnimation from '@/animations/SlideAnimation';
+import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react';
+import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
-// Import markdown files dynamically with updated query option
 const markdownFiles = import.meta.glob('/src/essays-reviews-markdown/*.md', { query: '?raw', import: 'default' });
 
 function EssaysReviewsPage() {
@@ -15,7 +16,6 @@ function EssaysReviewsPage() {
   const [activeLink, setActiveLink] = useState(null);
 
   useEffect(() => {
-    // Load links from the JSON file
     setLinks(essaysReviews);
     console.log('Available markdown files:', Object.keys(markdownFiles));
   }, []);
@@ -61,29 +61,51 @@ function EssaysReviewsPage() {
       <div className="flex flex-col md:flex-row group">
         <div className="flex-1 p-2 border-gray-300 relative">
           <div className="flex justify-between items-center mb-4">
-            <div>
-              <select
-                value={filter}
-                onChange={(e) => setFilter(e.target.value)}
-                className="p-2 border rounded"
+            <Menu as="div" className="relative inline-block text-left">
+              <div>
+                <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                  {filter}
+                  <ChevronDownIcon aria-hidden="true" className="-mr-1 h-5 w-5 text-gray-400" />
+                </MenuButton>
+              </div>
+              <Transition
+                as={React.Fragment}
+                enter="transition ease-out duration-100"
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-75"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
               >
-                <option value="All">All</option>
-                <option value="Film">Film</option>
-                <option value="Text">Text</option>
-                {/* Add more options as needed */}
-              </select>
-            </div>
+                <MenuItems className="absolute left-0 z-10 mt-2 w-56 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <div className="py-1">
+                    {['All', 'Film', 'Text'].map((option) => (
+                      <MenuItem key={option} onClick={() => setFilter(option)}>
+                        {({ active }) => (
+                          <button
+                            className={`block w-full px-4 py-2 text-left text-sm ${
+                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700'
+                            }`}
+                          >
+                            {option}
+                          </button>
+                        )}
+                      </MenuItem>
+                    ))}
+                  </div>
+                </MenuItems>
+              </Transition>
+            </Menu>
           </div>
           <div className="flex flex-col gap-2 text-sm">
             {sortedYears.map((year) => (
               <div key={year} className="flex border p-4 mb-2">
                 <div className="w-1/12 font-bold mt-2 mr-2">{year}</div>
                 <div className="w-11/12">
-                  {groupedLinks[year].map((link, index) => (
+                  {groupedLinks[year].map((link) => (
                     <button
                       key={link.id}
                       onClick={() => handleLinkClick(link.id)}
-                      // className="block border-b py-2 text-left w-full text-blue-500 hover:underline last:border-b-0"
                       className={`block border-b py-2 text-left w-full last:border-b-0 transition-colors duration-200 ease-in-out ${activeLink === link.id ? 'font-bold text-black' : 'text-gray-500 hover:text-gray-700 focus:text-black'}`}
                       style={{ textDecoration: 'none' }}
                     >
@@ -100,18 +122,17 @@ function EssaysReviewsPage() {
         </div>
         <div className="flex-1 p-2 border-gray-300 relative text-left">
           <SlideAnimation key={markdownContent}>
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeRaw]}
-            components={{
-              h1: ({ node, ...props }) => <h1 className="text-3xl font-bold mb-2" {...props} />,
-              h2: ({ node, ...props }) => <h2 className="text-2xl font-semibold mb-2" {...props} />,
-              p: ({ node, ...props }) => <p className="text-base mb-2" {...props} />,
-              // Add more custom styles for other elements as needed
-            }}
-          >
-            {markdownContent}
-          </ReactMarkdown>
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeRaw]}
+              components={{
+                h1: ({ node, ...props }) => <h1 className="text-3xl font-bold mb-2" {...props} />,
+                h2: ({ node, ...props }) => <h2 className="text-2xl font-semibold mb-2" {...props} />,
+                p: ({ node, ...props }) => <p className="text-base mb-2" {...props} />,
+              }}
+            >
+              {markdownContent}
+            </ReactMarkdown>
           </SlideAnimation>
           <div className="absolute top-0 bottom-0 left-0 w-0.5 bg-gray-300 opacity-0 transition-opacity duration-300 ease-in-out md:group-hover:opacity-100"></div>
         </div>
