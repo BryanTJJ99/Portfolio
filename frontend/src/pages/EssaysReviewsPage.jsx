@@ -43,6 +43,16 @@ function EssaysReviewsPage() {
 
   const filteredLinks = filter === 'All' ? links : links.filter(link => link.type === filter);
 
+  const groupedLinks = filteredLinks.reduce((acc, link) => {
+    if (!acc[link.year]) {
+      acc[link.year] = [];
+    }
+    acc[link.year].push(link);
+    return acc;
+  }, {});
+
+  const sortedYears = Object.keys(groupedLinks).sort((a, b) => b - a);
+
   return (
     <div className="container mx-auto">
       <div className="flex flex-col md:flex-row group">
@@ -62,29 +72,37 @@ function EssaysReviewsPage() {
             </div>
           </div>
           <div className="flex flex-col gap-2 text-sm">
-            {filteredLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => handleLinkClick(link.id)}
-                className="flex border p-2 text-left w-full text-blue-500 hover:underline"
-              >
-                <div className="w-1/12">{link.year}</div>
-                <div className="w-10/12">{link.title}</div>
-                <div className="w-1/12">{link.type}</div>
-              </button>
+            {sortedYears.map((year) => (
+              <div key={year} className="flex border p-4 mb-2">
+                <div className="w-1/12 font-bold mt-2 mr-2">{year}</div>
+                <div className="w-11/12">
+                  {groupedLinks[year].map((link, index) => (
+                    <button
+                      key={link.id}
+                      onClick={() => handleLinkClick(link.id)}
+                      className="block border-b py-2 text-left w-full text-blue-500 hover:underline last:border-b-0"
+                    >
+                      <div className="flex justify-between">
+                        <div>{link.title}</div>
+                        <div className="text-right">{link.type}</div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>
         <div className="flex-1 p-2 border-gray-300 relative text-left">
           <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              rehypePlugins={[rehypeRaw]}
-              components={{
-                h1: ({ node, ...props }) => <h1 className="text-3xl font-bold mb-2" {...props} />,
-                h2: ({ node, ...props }) => <h2 className="text-2xl font-semibold mb-2" {...props} />,
-                p: ({ node, ...props }) => <p className="text-base mb-2" {...props} />,
-                // Add more custom styles for other elements as needed
-              }}
+            remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeRaw]}
+            components={{
+              h1: ({ node, ...props }) => <h1 className="text-3xl font-bold mb-2" {...props} />,
+              h2: ({ node, ...props }) => <h2 className="text-2xl font-semibold mb-2" {...props} />,
+              p: ({ node, ...props }) => <p className="text-base mb-2" {...props} />,
+              // Add more custom styles for other elements as needed
+            }}
           >
             {markdownContent}
           </ReactMarkdown>
