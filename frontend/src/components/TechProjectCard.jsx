@@ -38,7 +38,7 @@ function TechProjectCard({ imgSrc, imgSrcModal, title, projectLink, description,
     <div className="relative hover:cursor-pointer transition-transform duration-300 hover:scale-105">
       <div onClick={toggleModal} className="aspect-h-2 aspect-w-3 w-full overflow-hidden rounded-lg">
         <img src={imgSrc} className="h-full w-full object-cover object-center" />
-        <p className="mt-8 text-base text-gray-500">
+        <p className="mt-2 text-base text-gray-500">
           {title}
         </p>
       </div>
