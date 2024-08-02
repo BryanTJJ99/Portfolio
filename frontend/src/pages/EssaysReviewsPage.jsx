@@ -6,6 +6,7 @@ import rehypeRaw from 'rehype-raw';
 import SlideAnimation from '@/animations/SlideAnimation';
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import { CustomH1, CustomH2, CustomP, CustomCode, CustomBlockquote, CustomListItem, CustomTable, CustomThead, CustomTbody, CustomTr, CustomTh, CustomTd } from '@/utils/CustomMarkdownComponents'; // Ensure this path is correct
 
 const markdownFiles = import.meta.glob('/src/essays-reviews-markdown/*.md', { query: '?raw', import: 'default' });
 
@@ -106,7 +107,9 @@ function EssaysReviewsPage() {
                     <button
                       key={link.id}
                       onClick={() => handleLinkClick(link.id)}
-                      className={`block border-b py-2 text-left w-full last:border-b-0 transition-colors duration-200 ease-in-out ${activeLink === link.id ? 'font-bold text-black' : 'text-gray-500 hover:text-gray-700 focus:text-black'}`}
+                      className={`block border-b py-2 text-left w-full last:border-b-0 transition-colors duration-200 ease-in-out ${
+                        activeLink === link.id ? 'font-bold text-black' : 'text-gray-500 hover:text-gray-700 focus:text-black'
+                      }`}
                       style={{ textDecoration: 'none' }}
                     >
                       <div className="flex justify-between">
@@ -126,9 +129,18 @@ function EssaysReviewsPage() {
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeRaw]}
               components={{
-                h1: ({ node, ...props }) => <h1 className="text-3xl font-bold mb-2" {...props} />,
-                h2: ({ node, ...props }) => <h2 className="text-2xl font-semibold mb-2" {...props} />,
-                p: ({ node, ...props }) => <p className="text-base mb-2" {...props} />,
+                h1: CustomH1,
+                h2: CustomH2,
+                p: CustomP,
+                code: CustomCode,
+                blockquote: CustomBlockquote,
+                li: CustomListItem,
+                table: CustomTable,
+                thead: CustomThead,
+                tbody: CustomTbody,
+                tr: CustomTr,
+                th: CustomTh,
+                td: CustomTd,
               }}
             >
               {markdownContent}
