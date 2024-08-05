@@ -59,7 +59,7 @@ function EssaysReviewsPage() {
 
   return (
     <div className="container mx-auto h-screen flex flex-col md:flex-row">
-      <div className="flex-1 p-2 border-gray-300 relative">
+      <div className="flex-1 p-2 border-gray-300 relative md:overflow-y-auto max-h-full">
         <div className="flex justify-between items-center mb-4">
           <Menu as="div" className="relative inline-block text-left">
             <div>
@@ -122,7 +122,7 @@ function EssaysReviewsPage() {
           ))}
         </div>
       </div>
-      <div className="flex-1 p-2 border-gray-300 relative text-left md:overflow-auto h-full">
+      <div className="flex-1 p-2 border-gray-300 relative text-left md:overflow-auto max-h-full">
         <SlideAnimation key={markdownContent}>
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}

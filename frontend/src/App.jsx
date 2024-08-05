@@ -3,6 +3,7 @@ import NavBar from "@/components/NavBar";
 import AppRoutes from "@/router/AppRoutes";
 import SplashScreen from "@/components/SplashScreen"; // Import the SplashScreen component
 import './App.css';
+import Footer from '@/components/Footer';
 
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
@@ -22,6 +23,7 @@ export default function App() {
         <NavBar />
         <AppRoutes />
       </div>
+      <Footer />
     </div>
   );
 }
