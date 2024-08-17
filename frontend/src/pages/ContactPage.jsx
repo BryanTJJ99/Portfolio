@@ -1,5 +1,5 @@
-import React from 'react';
 import ContactForm from '@/components/ContactForm';
+import React from 'react';
 
 function ContactPage() {
   return (
@@ -10,7 +10,7 @@ function ContactPage() {
         <div className="hidden md:block p-4">
           <img
             className="object-cover w-full h-full"
-            src="https://images.unsplash.com/photo-1716117273853-75a1989029f2?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3OXx8fGVufDB8fHx8fA%3D%3D"
+            src="https://dl.dropboxusercontent.com/scl/fi/fiafceauzlwne3h5gf490/DSC06632.jpg?rlkey=6bufekmugcny1twkkvbykrere&st=t3lwute3&dl=0"
             alt="Contact"
           />
         </div>
