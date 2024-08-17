@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Dropbox } from 'dropbox';
 import { useInView } from 'react-intersection-observer';
 import ImageCarousel from '@/components/ImageCarousel';
 import photographyData from '@/data/photography.json';
+
+const ACCESS_TOKEN = import.meta.env.VITE_ACCESS_TOKEN;
 
 function AlbumPage() {
   const { albumId } = useParams();
   const navigate = useNavigate();
   const [album, setAlbum] = useState(null);
+  const [photos, setPhotos] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const { ref: carouselRef, inView: carouselInView } = useInView({ threshold: 0.5 });
@@ -16,18 +20,56 @@ function AlbumPage() {
   const { ref: descriptionRef, inView: descriptionInView } = useInView({ threshold: 0.5 });
 
   useEffect(() => {
-    setAlbum(photographyData.albumDetails[albumId]);
+    // Convert albumId to title case to match the keys in photography.json
+    const normalizedAlbumId = albumId.charAt(0).toUpperCase() + albumId.slice(1).toLowerCase();
+    
+    const albumInfo = photographyData.albums[normalizedAlbumId];
+    if (albumInfo) {
+      setAlbum(albumInfo);
+    } else {
+      console.error(`No album information found for ID: ${normalizedAlbumId}`);
+    }
+  }, [albumId]);
+
+  useEffect(() => {
+    const dbx = new Dropbox({ accessToken: ACCESS_TOKEN });
+    
+    async function fetchPhotos() {
+      try {
+        const response = await dbx.filesListFolder({ path: `/Website/${albumId}` });
+
+        if (response.result.entries.length === 0) {
+          console.warn(`No photos found for album: ${albumId}`);
+          return;
+        }
+
+        const photosData = await Promise.all(response.result.entries.map(async (file) => {
+          const linkResponse = await dbx.filesGetTemporaryLink({ path: file.path_lower });
+          return {
+            id: file.id,
+            src: linkResponse.result.link,
+            title: file.name, // You might want to process the name if it contains file extensions
+          };
+        }));
+
+        setPhotos(photosData);
+      } catch (error) {
+        console.error('Error fetching photos from Dropbox:', error);
+      }
+    }
+
+    fetchPhotos();
   }, [albumId]);
 
   useEffect(() => {
     const hash = window.location.hash;
     if (hash) {
       const index = parseInt(hash.replace('#', '')) - 1;
-      if (!isNaN(index) && album && index >= 0 && index < album.photos.length) {
+      if (!isNaN(index) && photos.length > 0 && index >= 0 && index < photos.length) {
         setCurrentIndex(index);
       }
     }
-  }, [window.location.hash, album]);
+  }, [window.location.hash, photos]);
 
   const handleThumbnailClick = (index) => {
     navigate(`#${index + 1}`);
@@ -38,7 +80,7 @@ function AlbumPage() {
     });
   };
 
-  if (!album) {
+  if (!album || photos.length === 0) {
     return <div>Loading...</div>;
   }
 
@@ -48,7 +90,7 @@ function AlbumPage() {
         ref={carouselRef}
         className={`flex flex-col items-center transition-opacity duration-500 ${carouselInView ? 'opacity-100' : 'opacity-30'}`}
       >
-        <ImageCarousel photos={album.photos} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
+        <ImageCarousel photos={photos} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
         <hr className="w-11/12 border-gray-800 mt-10" />
       </div>
 
@@ -64,7 +106,7 @@ function AlbumPage() {
         className={`flex flex-col items-center transition-opacity duration-500 ${gridInView ? 'opacity-100' : 'opacity-30'}`}
       >
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 p-6">
-          {album.photos.map((photo, index) => (
+          {photos.map((photo, index) => (
             <div key={photo.id} className="relative w-full h-auto">
               <img
                 src={photo.src}

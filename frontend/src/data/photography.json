@@ -1,42 +1,34 @@
 {
-    "photoAlbums": [
-      {
-        "id": "dark-line-thames-estuary",
-        "title": "Dark Line – The Thames Estuary",
-        "link": "/photography-works/dark-line-thames-estuary"
+  "albums": {
+      "Seattle": {
+          "title": "Seattle",
+          "subHeader": "Exploring the Emerald City.",
+          "description": "A journey through the iconic landmarks and hidden gems of Seattle."
       },
-      {
-        "id": "another-album",
-        "title": "Another Album",
-        "link": "/photography-works/another-album"
-      }
-    ],
-    "albumDetails": {
-      "dark-line-thames-estuary": {
-        "title": "Dark Line – The Thames Estuary",
-        "subHeader": "A response to the dark times in society in collaboration with Prix Pictet.",
-        "description": "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
-        "photos": [
-          { "id": 1, "src": "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg", "title": "Untitled I, London, 23.03.2020 - 26.05.2020" },
-          { "id": 2, "src": "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg", "title": "Untitled II, London, 23.03.2020 - 26.05.2020" }
-        ]
+      "Canada": {
+          "title": "Canada",
+          "subHeader": "A vast and diverse landscape.",
+          "description": "An exploration of the natural beauty and vibrant cities of Canada."
       },
-      "another-album": {
-        "title": "Another Album",
-        "subHeader": "Description for another album.",
-        "description": "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
-        "photos": [
-            { "id": 1, "src": "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg", "title": "Untitled II, London, 23.03.2020 - 26.05.2020" },
-          { "id": 2, "src": "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg", "title": "Untitled I, London, 23.03.2020 - 26.05.2020" },
-          { "id": 3, "src": "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg", "title": "Untitled II, London, 23.03.2020 - 26.05.2020" },
-          { "id": 4, "src": "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg", "title": "Untitled II, London, 23.03.2020 - 26.05.2020" },
-          { "id": 5, "src": "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg", "title": "Untitled II, London, 23.03.2020 - 26.05.2020" },
-          { "id": 6, "src": "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg", "title": "Untitled II, London, 23.03.2020 - 26.05.2020" },
-          { "id": 7, "src": "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg", "title": "Untitled II, London, 23.03.2020 - 26.05.2020" },
-          { "id": 8, "src": "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg", "title": "Untitled II, London, 23.03.2020 - 26.05.2020" },
-          { "id": 9, "src": "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg", "title": "Untitled II, London, 23.03.2020 - 26.05.2020" }
-        ]
+      "Cleveland": {
+          "title": "Cleveland",
+          "subHeader": "The heart of rock and roll.",
+          "description": "Capturing the spirit and history of Cleveland."
+      },
+      "DC": {
+          "title": "Washington, D.C.",
+          "subHeader": "The nation's capital.",
+          "description": "A look at the monuments, museums, and moments that define D.C."
+      },
+      "Ohiopyle": {
+          "title": "Ohiopyle",
+          "subHeader": "Adventure in the outdoors.",
+          "description": "Documenting the rugged beauty and recreational opportunities in Ohiopyle."
+      },
+      "Pittsburgh": {
+          "title": "Pittsburgh",
+          "subHeader": "The Steel City.",
+          "description": "A photographic journey through Pittsburgh's past and present."
       }
-    }
   }
-  
+}
