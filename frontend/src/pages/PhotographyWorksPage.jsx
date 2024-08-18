@@ -7,16 +7,17 @@ const ACCESS_TOKEN = import.meta.env.VITE_ACCESS_TOKEN;
 function PhotographyWorksPage() {
   const [albums, setAlbums] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const dbx = new Dropbox({ accessToken: ACCESS_TOKEN });
     
     async function fetchAlbums() {
       try {
-        const albumFolders = ['Seattle', 'Canada', 'Cleveland', 'DC', 'Ohiopyle', 'Pittsburgh']; // Add your album folders here
+        const albumFolders = ['Seattle', 'Canada', 'Cleveland', 'DC', 'Ohiopyle', 'Pittsburgh'];
 
         const albumsData = await Promise.all(albumFolders.map(async (folder) => {
-          console.log(`Checking folder path: /Website/${folder}`); // Log the folder path
+          console.log(`Checking folder path: /Website/${folder}`);
 
           const response = await dbx.filesListFolder({ path: `/Website/${folder}` });
           
@@ -27,7 +28,6 @@ function PhotographyWorksPage() {
 
           const firstFile = response.result.entries[0];
           
-          // Get the temporary link for the first file
           const linkResponse = await dbx.filesGetTemporaryLink({ path: firstFile.path_lower });
           
           return {
@@ -38,32 +38,47 @@ function PhotographyWorksPage() {
           };
         }));
 
-        setAlbums(albumsData.filter(album => album !== null));
-        setIsLoading(false); // Set loading to false after data is fetched
+        const validAlbums = albumsData.filter(album => album !== null);
+
+        await Promise.all(validAlbums.map(album => {
+          return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.src = album.imgSrc;
+            img.onload = resolve;
+            img.onerror = reject;
+          });
+        }));
+
+        setAlbums(validAlbums);
+        setIsLoading(false);
+
+        // Trigger the fade-in effect after images are loaded
+        setTimeout(() => setIsVisible(true), 100);
       } catch (error) {
         console.error('Error fetching Dropbox data:', error);
-        setIsLoading(false); // Ensure loading is set to false even on error
+        setIsLoading(false);
       }
     }
 
     fetchAlbums();
   }, []);
 
-  if (isLoading) {
-    return <div>Loading albums...</div>; // Optionally, replace this with a more sophisticated loading spinner or component
-  }
-
   return (
-    <div className="mt-10 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {albums.map((album, index) => (
-        <PhotoAlbumCard
-          key={index}
-          imgSrc={album.imgSrc}
-          title={album.title}
-          photoNum={album.photoNum}
-          link={album.link}
-        />
-      ))}
+    <div>
+      <div className={`transition-opacity duration-500 ${isLoading ? 'opacity-100' : 'opacity-0'}`}>
+        Loading albums...
+      </div>
+      <div className={`mt-10 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        {albums.map((album, index) => (
+          <PhotoAlbumCard
+            key={index}
+            imgSrc={album.imgSrc}
+            title={album.title}
+            photoNum={album.photoNum}
+            link={album.link}
+          />
+        ))}
+      </div>
     </div>
   );
 }

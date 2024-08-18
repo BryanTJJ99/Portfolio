@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -8,31 +8,31 @@ const ImageCarousel = ({ photos, currentIndex, setCurrentIndex }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const updateHash = (index) => {
+  const updateHash = useCallback((index) => {
     navigate(`${location.pathname}#${index + 1}`);
-  };
+  }, [navigate, location.pathname]);
 
   const handleNext = useCallback(() => {
     if (!isTransitioning) {
       setIsTransitioning(true);
       setCurrentIndex((prevIndex) => {
-        const newIndex = (prevIndex + 1) % photos.length;
-        updateHash(newIndex);
-        return newIndex;
+        return (prevIndex + 1) % photos.length;
       });
     }
-  }, [isTransitioning, photos.length]);
+  }, [isTransitioning, photos.length, setCurrentIndex]);
 
   const handlePrev = useCallback(() => {
     if (!isTransitioning) {
       setIsTransitioning(true);
       setCurrentIndex((prevIndex) => {
-        const newIndex = (prevIndex - 1 + photos.length) % photos.length;
-        updateHash(newIndex);
-        return newIndex;
+        return (prevIndex - 1 + photos.length) % photos.length;
       });
     }
-  }, [isTransitioning, photos.length]);
+  }, [isTransitioning, photos.length, setCurrentIndex]);
+
+  useEffect(() => {
+    updateHash(currentIndex);
+  }, [currentIndex, updateHash]);
 
   const handleAnimationComplete = () => {
     setIsTransitioning(false);

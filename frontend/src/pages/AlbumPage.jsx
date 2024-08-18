@@ -16,18 +16,30 @@ function AlbumPage() {
 
   const { ref: carouselRef, inView: carouselInView } = useInView({ threshold: 0.5 });
   const { ref: titleRef, inView: titleInView } = useInView({ threshold: 0.5 });
-  const { ref: gridRef, inView: gridInView } = useInView({ threshold: 0.5 });
+  const { ref: gridRef, inView: gridInView } = useInView({ threshold: 0.1 });
   const { ref: descriptionRef, inView: descriptionInView } = useInView({ threshold: 0.5 });
 
   useEffect(() => {
-    // Convert albumId to title case to match the keys in photography.json
-    const normalizedAlbumId = albumId.charAt(0).toUpperCase() + albumId.slice(1).toLowerCase();
-    
-    const albumInfo = photographyData.albums[normalizedAlbumId];
+    // Try different normalization patterns
+    const patterns = [
+      albumId.charAt(0).toUpperCase() + albumId.slice(1).toLowerCase(), // Capitalize first letter
+      albumId.toUpperCase(), // Fully capitalize
+      albumId.toLowerCase(), // Fully lowercase
+    ];
+
+    let albumInfo = null;
+
+    for (const pattern of patterns) {
+      if (photographyData.albums[pattern]) {
+        albumInfo = photographyData.albums[pattern];
+        break;
+      }
+    }
+
     if (albumInfo) {
       setAlbum(albumInfo);
     } else {
-      console.error(`No album information found for ID: ${normalizedAlbumId}`);
+      console.error(`No album information found for ID: ${albumId}`);
     }
   }, [albumId]);
 
@@ -48,7 +60,7 @@ function AlbumPage() {
           return {
             id: file.id,
             src: linkResponse.result.link,
-            title: file.name, // You might want to process the name if it contains file extensions
+            title: file.name,
           };
         }));
 
@@ -107,13 +119,21 @@ function AlbumPage() {
       >
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 p-6">
           {photos.map((photo, index) => (
-            <div key={photo.id} className="relative w-full h-auto">
-              <img
-                src={photo.src}
-                alt={photo.title}
-                className={`object-cover cursor-pointer w-full h-full transition-all duration-500 ${index === currentIndex ? 'ring-2 ring-black' : 'ring-0'} hover:opacity-50`}
-                onClick={() => handleThumbnailClick(index)}
-              />
+            <div
+              key={photo.id}
+              className="relative w-full"
+            >
+              {/* Aspect Ratio Box */}
+              <div className="aspect-w-1 aspect-h-1">
+                <img
+                  src={photo.src}
+                  alt={photo.title}
+                  className={`object-cover w-full h-full cursor-pointer transition-all duration-500 ${
+                    index === currentIndex ? 'ring-2 ring-black' : 'ring-0'
+                  } hover:opacity-50`}
+                  onClick={() => handleThumbnailClick(index)}
+                />
+              </div>
             </div>
           ))}
         </div>
