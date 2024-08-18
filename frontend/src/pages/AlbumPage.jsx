@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Dropbox } from 'dropbox';
 import { useInView } from 'react-intersection-observer';
 import ImageCarousel from '@/components/ImageCarousel';
 import photographyData from '@/data/photography.json';
-
-const ACCESS_TOKEN = import.meta.env.VITE_ACCESS_TOKEN;
 
 function AlbumPage() {
   const { albumId } = useParams();
@@ -20,11 +17,10 @@ function AlbumPage() {
   const { ref: descriptionRef, inView: descriptionInView } = useInView({ threshold: 0.5 });
 
   useEffect(() => {
-    // Try different normalization patterns
     const patterns = [
-      albumId.charAt(0).toUpperCase() + albumId.slice(1).toLowerCase(), // Capitalize first letter
-      albumId.toUpperCase(), // Fully capitalize
-      albumId.toLowerCase(), // Fully lowercase
+      albumId.charAt(0).toUpperCase() + albumId.slice(1).toLowerCase(),
+      albumId.toUpperCase(),
+      albumId.toLowerCase(),
     ];
 
     let albumInfo = null;
@@ -44,29 +40,19 @@ function AlbumPage() {
   }, [albumId]);
 
   useEffect(() => {
-    const dbx = new Dropbox({ accessToken: ACCESS_TOKEN });
-    
     async function fetchPhotos() {
       try {
-        const response = await dbx.filesListFolder({ path: `/Website/${albumId}` });
+        const response = await fetch(`/api/fetchPhotos?albumId=${albumId}`);
+        const photosData = await response.json();
 
-        if (response.result.entries.length === 0) {
-          console.warn(`No photos found for album: ${albumId}`);
+        if (photosData.error) {
+          console.error(photosData.error);
           return;
         }
 
-        const photosData = await Promise.all(response.result.entries.map(async (file) => {
-          const linkResponse = await dbx.filesGetTemporaryLink({ path: file.path_lower });
-          return {
-            id: file.id,
-            src: linkResponse.result.link,
-            title: file.name,
-          };
-        }));
-
         setPhotos(photosData);
       } catch (error) {
-        console.error('Error fetching photos from Dropbox:', error);
+        console.error('Error fetching photos:', error);
       }
     }
 

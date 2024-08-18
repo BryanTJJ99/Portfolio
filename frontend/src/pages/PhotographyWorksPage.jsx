@@ -1,8 +1,5 @@
-import PhotoAlbumCard from '@/components/PhotoAlbumCard';
-import { Dropbox } from 'dropbox';
 import React, { useEffect, useState } from 'react';
-
-const ACCESS_TOKEN = import.meta.env.VITE_ACCESS_TOKEN;
+import PhotoAlbumCard from '@/components/PhotoAlbumCard';
 
 function PhotographyWorksPage() {
   const [albums, setAlbums] = useState([]);
@@ -10,32 +7,30 @@ function PhotographyWorksPage() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const dbx = new Dropbox({ accessToken: ACCESS_TOKEN });
-    
     async function fetchAlbums() {
       try {
         const albumFolders = ['Seattle', 'Canada', 'Cleveland', 'DC', 'Ohiopyle', 'Pittsburgh'];
 
         const albumsData = await Promise.all(albumFolders.map(async (folder) => {
-          console.log(`Checking folder path: /Website/${folder}`);
+          const response = await fetch(`/api/fetchAlbums?folder=${folder}`);
 
-          const response = await dbx.filesListFolder({ path: `/Website/${folder}` });
-          
-          if (response.result.entries.length === 0) {
-            console.warn(`Folder ${folder} is empty.`);
+          if (!response.ok) {
+            console.error(`Error fetching album data: ${response.statusText}`);
             return null;
           }
 
-          const firstFile = response.result.entries[0];
-          
-          const linkResponse = await dbx.filesGetTemporaryLink({ path: firstFile.path_lower });
-          
-          return {
-            title: folder,
-            imgSrc: linkResponse.result.link,
-            link: `/photography-works/${folder.toLowerCase()}`,
-            photoNum: response.result.entries.length,
-          };
+          try {
+            const data = await response.json();
+            return {
+              title: data.title,
+              imgSrc: data.imgSrc,
+              link: `/photography-works/${folder.toLowerCase()}`,
+              photoNum: data.photoNum,
+            };
+          } catch (jsonError) {
+            console.error(`Failed to parse JSON for folder ${folder}:`, jsonError);
+            return null;
+          }
         }));
 
         const validAlbums = albumsData.filter(album => album !== null);
@@ -52,10 +47,9 @@ function PhotographyWorksPage() {
         setAlbums(validAlbums);
         setIsLoading(false);
 
-        // Trigger the fade-in effect after images are loaded
         setTimeout(() => setIsVisible(true), 100);
       } catch (error) {
-        console.error('Error fetching Dropbox data:', error);
+        console.error('Error fetching album data:', error);
         setIsLoading(false);
       }
     }
