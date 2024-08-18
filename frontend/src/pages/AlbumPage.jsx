@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
+import { Dropbox } from 'dropbox';
 import ImageCarousel from '@/components/ImageCarousel';
 import photographyData from '@/data/photography.json';
 
@@ -41,18 +42,35 @@ function AlbumPage() {
 
   useEffect(() => {
     async function fetchPhotos() {
-      try {
-        const response = await fetch(`/api/fetchPhotos?albumId=${albumId}`);
-        const photosData = await response.json();
+      const dbx = new Dropbox({ accessToken: import.meta.env.VITE_ACCESS_TOKEN });
 
-        if (photosData.error) {
-          console.error(photosData.error);
+      try {
+        const response = await dbx.filesListFolder({ path: `/Website/${albumId}` });
+
+        if (response.result.entries.length === 0) {
+          console.warn(`No photos found for album: ${albumId}`);
           return;
         }
 
-        setPhotos(photosData);
+        const photosData = await Promise.all(response.result.entries.map(async (file) => {
+          try {
+            const linkResponse = await dbx.filesGetTemporaryLink({ path: file.path_lower });
+            return {
+              id: file.id,
+              src: linkResponse.result.link,
+              title: file.name,
+            };
+          } catch (error) {
+            console.error(`Failed to fetch link for file ${file.name}:`, error);
+            return null;
+          }
+        }));
+
+        const validPhotos = photosData.filter(photo => photo !== null);
+        setPhotos(validPhotos);
+
       } catch (error) {
-        console.error('Error fetching photos:', error);
+        console.error('Error fetching photos from Dropbox:', error);
       }
     }
 

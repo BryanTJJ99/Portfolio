@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Dropbox } from 'dropbox';
 import PhotoAlbumCard from '@/components/PhotoAlbumCard';
 
 function PhotographyWorksPage() {
@@ -8,27 +9,35 @@ function PhotographyWorksPage() {
 
   useEffect(() => {
     async function fetchAlbums() {
+      const dbx = new Dropbox({ accessToken: import.meta.env.VITE_ACCESS_TOKEN });
+      const albumFolders = ['Seattle', 'Canada', 'Cleveland', 'DC', 'Ohiopyle', 'Pittsburgh'];
+
       try {
-        const albumFolders = ['Seattle', 'Canada', 'Cleveland', 'DC', 'Ohiopyle', 'Pittsburgh'];
-
         const albumsData = await Promise.all(albumFolders.map(async (folder) => {
-          const response = await fetch(`/api/fetchAlbums?folder=${folder}`);
-
-          if (!response.ok) {
-            console.error(`Error fetching album data: ${response.statusText}`);
-            return null;
-          }
-
           try {
-            const data = await response.json();
+            const response = await dbx.filesListFolder({ path: `/Website/${folder}` });
+
+            if (response.result.entries.length === 0) {
+              console.warn(`Folder ${folder} is empty.`);
+              return null;
+            }
+
+            const firstFile = response.result.entries.find((entry) => entry['.tag'] === 'file');
+            if (!firstFile) {
+              console.warn(`No image files found in folder ${folder}.`);
+              return null;
+            }
+
+            const linkResponse = await dbx.filesGetTemporaryLink({ path: firstFile.path_lower });
+
             return {
-              title: data.title,
-              imgSrc: data.imgSrc,
+              title: folder,
+              imgSrc: linkResponse.result.link,
               link: `/photography-works/${folder.toLowerCase()}`,
-              photoNum: data.photoNum,
+              photoNum: response.result.entries.length,
             };
-          } catch (jsonError) {
-            console.error(`Failed to parse JSON for folder ${folder}:`, jsonError);
+          } catch (error) {
+            console.error(`Error fetching data for folder ${folder}:`, error);
             return null;
           }
         }));
@@ -46,7 +55,6 @@ function PhotographyWorksPage() {
 
         setAlbums(validAlbums);
         setIsLoading(false);
-
         setTimeout(() => setIsVisible(true), 100);
       } catch (error) {
         console.error('Error fetching album data:', error);
