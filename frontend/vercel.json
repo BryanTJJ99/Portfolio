@@ -1,9 +1,12 @@
 {
-    "rewrites": [
-      {
-        "source": "/api/(.*)",
-        "destination": "/src/api/$1"
-      }
-    ]
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/src/api/$1"
+    }
+  ],
+  "build": {
+    "command": "npm run build",
+    "outputDirectory": "dist"
   }
-  
+}
