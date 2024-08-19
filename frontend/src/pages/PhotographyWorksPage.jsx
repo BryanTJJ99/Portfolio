@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Dropbox } from 'dropbox';
+import { getDropboxClient } from '@/utils/dropboxClient';
 import PhotoAlbumCard from '@/components/PhotoAlbumCard';
 
 function PhotographyWorksPage() {
@@ -9,7 +9,7 @@ function PhotographyWorksPage() {
 
   useEffect(() => {
     async function fetchAlbums() {
-      const dbx = new Dropbox({ accessToken: import.meta.env.VITE_ACCESS_TOKEN });
+      const dbx = await getDropboxClient();
       const albumFolders = ['Seattle', 'Canada', 'Cleveland', 'DC', 'Ohiopyle', 'Pittsburgh'];
 
       try {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
-import { Dropbox } from 'dropbox';
+import { getDropboxClient } from '@/utils/dropboxClient';
 import ImageCarousel from '@/components/ImageCarousel';
 import photographyData from '@/data/photography.json';
 
@@ -42,7 +42,7 @@ function AlbumPage() {
 
   useEffect(() => {
     async function fetchPhotos() {
-      const dbx = new Dropbox({ accessToken: import.meta.env.VITE_ACCESS_TOKEN });
+      const dbx = await getDropboxClient();
 
       try {
         const response = await dbx.filesListFolder({ path: `/Website/${albumId}` });
