@@ -1,32 +1,37 @@
-import { Dropbox } from 'dropbox';
+import { Storage } from '@google-cloud/storage';
 
 export default async function handler(req, res) {
-  const dbx = new Dropbox({ accessToken: process.env.DROPBOX_ACCESS_TOKEN });
+  const storage = new Storage({
+    projectId: process.env.GCS_PROJECT_ID,
+    keyFilename: process.env.GCS_KEY_FILE,
+  });
+  const bucketName = process.env.GCS_BUCKET_NAME;
 
   try {
     const { albumId } = req.query;
-    console.log(`Fetching photos for album: ${albumId}`);
 
-    const response = await dbx.filesListFolder({ path: `/Website/${albumId}` });
+    const [files] = await storage.bucket(bucketName).getFiles({ prefix: `Website/${albumId}/` });
 
-    if (response.result.entries.length === 0) {
-      console.warn(`No photos found for album: ${albumId}`);
+    if (files.length === 0) {
       res.status(200).json({ message: `No photos found for album: ${albumId}` });
       return;
     }
 
-    const photosData = await Promise.all(response.result.entries.map(async (file) => {
-      const linkResponse = await dbx.filesGetTemporaryLink({ path: file.path_lower });
+    const photosData = await Promise.all(files.map(async (file) => {
+      const [signedUrl] = await file.getSignedUrl({
+        action: 'read',
+        expires: '03-09-2500',
+      });
       return {
         id: file.id,
-        src: linkResponse.result.link,
+        src: signedUrl,
         title: file.name,
       };
     }));
 
     res.status(200).json(photosData);
   } catch (error) {
-    console.error('Error fetching photos from Dropbox:', error);
-    res.status(500).json({ error: 'Error fetching photos from Dropbox.', details: error.message });
+    console.error('Error fetching photos from Google Cloud Storage:', error);
+    res.status(500).json({ error: 'Error fetching photos from Google Cloud Storage.', details: error.message });
   }
 }

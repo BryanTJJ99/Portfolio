@@ -1,30 +1,35 @@
-import { Dropbox } from 'dropbox';
+import { Storage } from '@google-cloud/storage';
 
 export default async function handler(req, res) {
-  const dbx = new Dropbox({ accessToken: process.env.DROPBOX_ACCESS_TOKEN });
+  const storage = new Storage({
+    projectId: process.env.GCS_PROJECT_ID,
+    keyFilename: process.env.GCS_KEY_FILE,
+  });
+  const bucketName = process.env.GCS_BUCKET_NAME;
 
   try {
     const { folder } = req.query;
-    console.log(`Fetching data for folder: ${folder}`);
 
-    const response = await dbx.filesListFolder({ path: `/Website/${folder}` });
+    const [files] = await storage.bucket(bucketName).getFiles({ prefix: `Website/${folder}/` });
 
-    if (response.result.entries.length === 0) {
-      console.warn(`Folder ${folder} is empty.`);
+    if (files.length === 0) {
       res.status(200).json({ message: `Folder ${folder} is empty.` });
       return;
     }
 
-    const firstFile = response.result.entries[0];
-    const linkResponse = await dbx.filesGetTemporaryLink({ path: firstFile.path_lower });
+    const firstFile = files[0];
+    const [signedUrl] = await firstFile.getSignedUrl({
+      action: 'read',
+      expires: '03-09-2500',
+    });
 
     res.status(200).json({
       title: folder,
-      imgSrc: linkResponse.result.link,
-      photoNum: response.result.entries.length,
+      imgSrc: signedUrl,
+      photoNum: files.length,
     });
   } catch (error) {
-    console.error('Error fetching Dropbox data:', error);
-    res.status(500).json({ error: 'Error fetching Dropbox data.', details: error.message });
+    console.error('Error fetching Google Cloud Storage data:', error);
+    res.status(500).json({ error: 'Error fetching Google Cloud Storage data.', details: error.message });
   }
 }
