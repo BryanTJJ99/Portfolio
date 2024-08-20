@@ -2,7 +2,6 @@ import AlbumPage from '@/pages/AlbumPage'; // Example sub-page
 import BiographyPage from '@/pages/BiographyPage';
 import ContactPage from '@/pages/ContactPage';
 import EssaysReviewsPage from '@/pages/EssaysReviewsPage';
-import FeedPage from '@/pages/FeedPage';
 import PhotographyWorksPage from '@/pages/PhotographyWorksPage';
 import TechProjectsPage from '@/pages/TechProjectsPage';
 import React from 'react';
@@ -29,11 +28,7 @@ export default function AppRoutes() {
       <Routes key={location.pathname} location={location}>
         <Route
           path="/"
-          element={shouldAnimate(location.pathname) ? <SlideAnimation><FeedPage /></SlideAnimation> : <FeedPage />}
-        />
-        <Route
-          path="/feed"
-          element={shouldAnimate(location.pathname) ? <SlideAnimation><FeedPage /></SlideAnimation> : <FeedPage />}
+          element={shouldAnimate(location.pathname) ? <SlideAnimation><BiographyPage /></SlideAnimation> : <BiographyPage />}
         />
         <Route
           path="/biography"
