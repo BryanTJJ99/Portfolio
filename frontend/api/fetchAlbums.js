@@ -1,15 +1,21 @@
 import { Storage } from '@google-cloud/storage';
 
 export default async function handler(req, res) {
-  const storage = new Storage({
-    projectId: process.env.GCS_PROJECT_ID,
-    keyFilename: process.env.GCS_KEY_FILE,
-  });
-  const bucketName = process.env.GCS_BUCKET_NAME;
-
   try {
+    // Decode the base64-encoded credentials
+    const gcsCredentials = Buffer.from(process.env.GCS_CREDENTIALS_BASE64, 'base64').toString('utf-8');
+    const parsedCredentials = JSON.parse(gcsCredentials);
+
+    // Initialize the Google Cloud Storage client with the parsed credentials
+    const storage = new Storage({
+      projectId: process.env.GCS_PROJECT_ID,
+      credentials: parsedCredentials,
+    });
+
+    const bucketName = process.env.GCS_BUCKET_NAME;
     const { folder } = req.query;
 
+    // Fetch files from the specified folder
     const [files] = await storage.bucket(bucketName).getFiles({ prefix: `Website/${folder}/` });
 
     if (files.length === 0) {

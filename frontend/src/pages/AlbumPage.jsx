@@ -45,12 +45,17 @@ function AlbumPage() {
         const response = await fetch(`/api/fetchPhotos?albumId=${albumId}`);
         const photosData = await response.json();
 
-        if (photosData.error) {
-          console.error(photosData.error);
-          return;
-        }
+        console.log('Photos API Response:', photosData);
 
-        setPhotos(photosData);
+        if (response.ok) {
+          if (Array.isArray(photosData)) {
+            setPhotos(photosData);  // Set photos directly if it's an array
+          } else {
+            console.error(`Expected array but received ${typeof photosData}`);
+          }
+        } else {
+          console.error(`Error fetching photos: ${photosData.error || 'Unknown error'}`);
+        }
       } catch (error) {
         console.error('Error fetching photos:', error);
       }
@@ -78,7 +83,7 @@ function AlbumPage() {
     });
   };
 
-  if (!album || photos.length === 0) {
+  if (!album || !Array.isArray(photos) || photos.length === 0) {
     return <div>Loading...</div>;
   }
 

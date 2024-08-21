@@ -27,3 +27,4 @@ dist-ssr
 .env
 .vercel
 gcs-key-file.json
+encoded_key.txt

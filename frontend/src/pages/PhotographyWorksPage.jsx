@@ -13,7 +13,7 @@ function PhotographyWorksPage() {
 
         const albumsData = await Promise.all(albumFolders.map(async (folder) => {
           const response = await fetch(`/api/fetchAlbums?folder=${folder}`);
-
+          console.log('Response for folder:', folder, response);
           if (!response.ok) {
             console.error(`Error fetching album data: ${response.statusText}`);
             return null;
@@ -39,8 +39,14 @@ function PhotographyWorksPage() {
           return new Promise((resolve, reject) => {
             const img = new Image();
             img.src = album.imgSrc;
-            img.onload = resolve;
-            img.onerror = reject;
+            img.onload = () => {
+              console.log(`Image loaded successfully for ${album.title}`);
+              resolve();
+            };
+            img.onerror = (error) => {
+              console.error(`Failed to load image for ${album.title}:`, error);
+              reject();
+            };
           });
         }));
 
@@ -59,9 +65,11 @@ function PhotographyWorksPage() {
 
   return (
     <div>
-      <div className={`transition-opacity duration-500 ${isLoading ? 'opacity-100' : 'opacity-0'}`}>
-        Loading albums...
-      </div>
+      {isLoading && (
+        <div className="transition-opacity duration-500 opacity-100">
+          Loading albums...
+        </div>
+      )}
       <div className={`mt-10 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         {albums.map((album, index) => (
           <PhotoAlbumCard
