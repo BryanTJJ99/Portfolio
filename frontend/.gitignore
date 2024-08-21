@@ -26,3 +26,4 @@ dist-ssr
 # Environment variable files
 .env
 .vercel
+gcs-key-file.json

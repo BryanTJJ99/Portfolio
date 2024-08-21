@@ -1,12 +1,13 @@
 {
-  "rewrites": [
+  "version": 2,
+  "routes": [
     {
-      "source": "/api/(.*)",
-      "destination": "/src/api/$1"
+      "src": "/api/(.*)",
+      "dest": "/src/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
-  ],
-  "build": {
-    "command": "npm run build",
-    "outputDirectory": "dist"
-  }
+  ]
 }

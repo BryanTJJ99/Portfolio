@@ -72,6 +72,9 @@ const TechProjectsPage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10"> {/* Adjusted gap */}
             {renderProjects(softwareProjects)}
           </div>
+
+          <hr className="my-8 border-gray-300" />
+
           {productProjects.length > 0 && (
             <>
               <h2 className="text-2xl font-bold mb-4">Innovation & Product Management</h2>
