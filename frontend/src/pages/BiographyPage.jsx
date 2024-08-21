@@ -1,7 +1,6 @@
 import React from 'react';
 import ProfilePhoto from '@/assets/images/ProfilePhoto.jpg';
 import TimeLine from '@/components/Timeline';
-import { Timeline, Typography } from "@material-tailwind/react";
 
 function BiographyPage() {
   return (
