@@ -15,7 +15,7 @@
     "imgSrc": "/tech-projects/BigData.png",
     "title": "Big Data Architecture",
     "projectLink": "",
-    "description": "Industry collaboration project with PropertyGuru on building a sustainable data architecture for retail rental insights using AWS services",
+    "description": "This project aimed to address the challenge of consolidating disparate data sources in Singapore's commercial property landscape, which lacked a unified source of truth. By collaborating with PropertyGuru, we designed and implemented a sustainable data architecture that accurately aggregates data from various sources. This architecture supports the generation of actionable insights, tailored for shopping mall tenants and PropertyGuru stakeholders.",
     "icons": ["SiAwsamplify", "SiAmazonredshift", "SiAmazoncomprehend", "SiAmazons3", "SiAwslambda", "SiGooglecloudstorage", "SiGooglebigquery"]
   },
   {
@@ -51,7 +51,7 @@
     "imgSrc": "/tech-projects/SPM.png",
     "title": "Software Product Management",
     "projectLink": "https://drive.google.com/file/d/1_kjXlMKVkDwBME-4inrP1TZw24OA9hRz/view?usp=sharing",
-    "description": "Analysed land cover change in green spaces in Singapore’s Jurong Lake District using Sentinel-2 data, and recommend suitable strategies to reduce forested land loss.",
+    "description": "The project involved applying Software Project Management principles and techniques, with a focus on Agile Methods for software development. The work encompassed popular Agile frameworks such as Scrum, and utilized techniques like Pair Programming, C4 architecture, Test-Driven Development (TDD), Code Refactoring, and Continuous Integration (CI). The project team developed a web application that integrated data analytics, effectively combining software development and project management skills in a collaborative environment.",
     "icons": ["SiJira", "SiScrumalliance", "SiGithubactions", "FaGit"]
   },
   {
@@ -69,7 +69,7 @@
     "imgSrc": "/tech-projects/DBTT.png",
     "title": "Digital Business Technologies and Transformation",
     "projectLink": "https://drive.google.com/file/d/1Dk9R2X2ENyDb1wvrY_6nU3GL0kXGMRle/view?usp=sharing",
-    "description": "Evaluate local company selling STEM kits for kids. Recommendations for business model, marketing, and operations.",
+    "description": "This project, undertaken in the 'Digital Business Technology and Transformation' course, aimed to digitally transform a STEM-toy company by applying key frameworks and tools such as Porter’s Five Forces and the Business Model Canvas. The project included a thorough situational analysis to identify strategic challenges like limited product offerings and customer retention issues. A new digital strategy was developed, integrating a mobile application that combined physical STEM toys with interactive educational content to enhance customer engagement. Additionally, the project leveraged data analytics and predictive modeling to personalize the user experience and optimize business outcomes, providing a comprehensive roadmap for the company’s digital evolution.",
     "icons": []
   },
     {
@@ -78,7 +78,7 @@
     "imgSrc": "/tech-projects/BPAS.png",
     "title": "Business Process Analysis and Solutioning",
     "projectLink": "https://drive.google.com/file/d/1p8gX5AvQPmiB30PWr31AyDvhleHBpQGj/view?usp=sharing",
-    "description": "",
+    "description": "In the 'Business Process Analysis & Solutioning' course, this project focused on optimizing the business processes of a local funeral service provider. A thorough analysis using As-Is/To-Be Process Workflow Models and Root Cause Analysis is conducted, identifying key inefficiencies in document management and logistical tracking. A Solution Overview Model was developed, proposing the implementation of a Customer Relationship Management (CRM) system for streamlined operations, a Logistics Management System (LMS) for better asset management, and technologies used to prevent body mix-ups. These solutions, detailed in the Business Model Canvas, aimed to enhance operational efficiency and improve the overall customer experience.",
     "icons": []
   }
 ]

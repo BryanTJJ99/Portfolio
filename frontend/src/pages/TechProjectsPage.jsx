@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import MachineLearningInProduction from '/tech-projects/MachineLearningInProduction.png';
+import BigData from '/tech-projects/BigData.png';
+import BlackGold from '/tech-projects/BlackGold.png';
+import OOP from '/tech-projects/OOP.png';
+import ESD from '/tech-projects/ESD.png';
+import SPM from '/tech-projects/SPM.png';
+import GIS from '/tech-projects/GIS.png';
+import DBTT from '/tech-projects/DBTT.png';
+import BPAS from '/tech-projects/BPAS.png';
 import TechProjectCard from '@/components/TechProjectCard';
 import projectData from '@/data/tech-projects.json';
 import { Accordion, AccordionPanel, AccordionTitle, AccordionContent } from 'flowbite-react';
@@ -11,13 +19,25 @@ const TechProjectsPage = () => {
   const isSmallScreen = useMediaQuery('(max-width: 640px)');
 
   useEffect(() => {
+    const imageMap = {
+      '/tech-projects/MachineLearningInProduction.png': MachineLearningInProduction,
+      '/tech-projects/BigData.png': BigData,
+      '/tech-projects/BlackGold.png': BlackGold,
+      '/tech-projects/OOP.png': OOP,
+      '/tech-projects/ESD.png': ESD,
+      '/tech-projects/SPM.png': SPM,
+      '/tech-projects/GIS.png': GIS,
+      '/tech-projects/DBTT.png': DBTT,
+      '/tech-projects/BPAS.png': BPAS,
+    };
+
     const software = [];
     const product = [];
 
     projectData.forEach(project => {
-      if (project.imgSrc === '/tech-projects/MachineLearningInProduction.png') {
-        project.imgSrc = MachineLearningInProduction;
-        project.imgSrcModal = MachineLearningInProduction;
+      if (imageMap[project.imgSrc]) {
+        project.imgSrc = imageMap[project.imgSrc];
+        project.imgSrcModal = imageMap[project.imgSrc];
       }
       if (project.category === 'Software & Data Engineering') {
         software.push(project);
