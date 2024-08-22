@@ -5,14 +5,14 @@
     "imgSrc": "/tech-projects/MachineLearningInProduction.png",
     "imgSrcModal": "/tech-projects/MachineLearningInProduction.png",
     "title": "Machine Learning in Production (CMU 17-445)",
-    "projectLink": "https://github.com/cmu-seai/group-project-s24-caped-crusaders",
+    "projectLink": "https://github.com/BryanTJJ99/ML-In-Production",
     "description": "End-to-end development of machine learning applications, including production testing, deployment pipelines, and robust data infrastructure for model learning and serving.",
     "icons": ["SiApachekafka", "FaDocker", "FaFlask", "SiGrafana", "SiApacheairflow"]
   },
   {
     "id": 2,
     "category": "Software & Data Engineering",
-    "imgSrc": "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
+    "imgSrc": "/tech-projects/BigData.png",
     "title": "Big Data Architecture",
     "projectLink": "",
     "description": "Industry collaboration project with PropertyGuru on building a sustainable data architecture for retail rental insights using AWS services",
@@ -21,16 +21,16 @@
   {
     "id": 3,
     "category": "Software & Data Engineering",
-    "imgSrc": "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
+    "imgSrc": "/tech-projects/BlackGold.png",
     "title": "Web Application Development - Community Composting",
-    "projectLink": "",
+    "projectLink": "https://github.com/Noreht/wad2_project",
     "description": "Built a frontend webpage titled BlackGold, which is a platform that aims to organically create composting communities across different apartments and regions in Singapore",
     "icons": ["FaVuejs","SiTailwindcss","FaNodeJs"]
   },
   {
     "id": 4,
     "category": "Software & Data Engineering",
-    "imgSrc": "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
+    "imgSrc": "/tech-projects/OOP.png",
     "title": "Object Oriented Programming - Corporate Form Application",
     "projectLink": "https://github.com/BryanTJJ99/OOP_FormApp",
     "description": "Created a CRUD form application for a sponsoring client using Springboot for the backend and React for the frontend. The application is designed to manage corporate forms and their respective data.",
@@ -39,28 +39,46 @@
   {
     "id": 5,
     "category": "Software & Data Engineering",
-    "imgSrc": "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
+    "imgSrc": "/tech-projects/ESD.png",
     "title": "Microservices Architecture - SecondChance Recycling System",
     "projectLink": "",
-    "description": "Built a full-stack app titled SecondChance, a resource management platform to track and reuse existing resources, reducing costs and promoting circular economy while quantifying carbon emissions reduction. Developed based on the principles of the microservices architecture.",
+    "description": "Built a full-stack app using microservices architecture. Titled SecondChance, the resource management platform aims to track and reuse existing resources, reducing costs and promoting circular economy while quantifying carbon emissions reduction.",
     "icons": ["FaDocker", "FaFlask", "SiRabbitmq", "FaVuejs", "SiMongodb"]
   },
   {
     "id": 6,
     "category": "Innovation & Product Management",
-    "imgSrc": "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
+    "imgSrc": "/tech-projects/SPM.png",
     "title": "Software Product Management",
-    "projectLink": "",
+    "projectLink": "https://drive.google.com/file/d/1_kjXlMKVkDwBME-4inrP1TZw24OA9hRz/view?usp=sharing",
     "description": "Analysed land cover change in green spaces in Singapore’s Jurong Lake District using Sentinel-2 data, and recommend suitable strategies to reduce forested land loss.",
     "icons": ["SiJira", "SiScrumalliance", "SiGithubactions", "FaGit"]
   },
   {
     "id": 7,
     "category": "Software & Data Engineering",
-    "imgSrc": "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
+    "imgSrc": "/tech-projects/GIS.png",
     "title": "Geographical Information System - Satellite Land Cover Change Detection",
     "projectLink": "https://urbansensingjld.netlify.app/",
     "description": "Analysed land cover change in green spaces in Singapore’s Jurong Lake District using Sentinel-2 data, and recommend suitable strategies to reduce forested land loss.",
     "icons": ["SiQgis", "SiRstudio", "SiMysql"]
+  },
+  {
+    "id": 8,
+    "category": "Innovation & Product Management",
+    "imgSrc": "/tech-projects/DBTT.png",
+    "title": "Digital Business Technologies and Transformation",
+    "projectLink": "https://drive.google.com/file/d/1Dk9R2X2ENyDb1wvrY_6nU3GL0kXGMRle/view?usp=sharing",
+    "description": "Evaluate local company selling STEM kits for kids. Recommendations for business model, marketing, and operations.",
+    "icons": []
+  },
+    {
+    "id": 9,
+    "category": "Innovation & Product Management",
+    "imgSrc": "/tech-projects/BPAS.png",
+    "title": "Business Process Analysis and Solutioning",
+    "projectLink": "https://drive.google.com/file/d/1p8gX5AvQPmiB30PWr31AyDvhleHBpQGj/view?usp=sharing",
+    "description": "",
+    "icons": []
   }
 ]

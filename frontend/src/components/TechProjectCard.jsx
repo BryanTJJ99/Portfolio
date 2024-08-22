@@ -43,7 +43,6 @@ function TechProjectCard({ imgSrc, imgSrcModal, title, projectLink, description,
         </p>
       </div>
 
-
       <Transition appear show={isModalOpen}>
         <Dialog as="div" className="fixed inset-0 z-50 focus:outline-none" onClose={toggleModal}>
           {/* Darkens the background as modal appears */}
@@ -73,7 +72,7 @@ function TechProjectCard({ imgSrc, imgSrcModal, title, projectLink, description,
                   <DialogTitle as="h1" className="text-base/1 font-medium">
                     Description
                   </DialogTitle>
-                  <p className="my-2 ">
+                  <p className="my-2">
                     {description}
                     <img src={imgSrcModal} className="" />
                   </p>
@@ -96,14 +95,16 @@ function TechProjectCard({ imgSrc, imgSrcModal, title, projectLink, description,
                     })}
                   </div>
 
-                  <div className="mt-4">
-                    <Button
-                      className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
-                      onClick={handleButtonClick}
-                    >
-                      Visit Project Page
-                    </Button>
-                  </div>
+                  {projectLink && (
+                    <div className="mt-4">
+                      <Button
+                        className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
+                        onClick={handleButtonClick}
+                      >
+                        Visit Project Page
+                      </Button>
+                    </div>
+                  )}
                 </DialogPanel>
               </TransitionChild>
             </div>
@@ -118,7 +119,7 @@ TechProjectCard.propTypes = {
   imgSrc: PropTypes.string.isRequired,
   imgSrcModal: PropTypes.string,
   title: PropTypes.string.isRequired,
-  projectLink: PropTypes.string.isRequired,
+  projectLink: PropTypes.string,
   description: PropTypes.string.isRequired,
   icons: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
