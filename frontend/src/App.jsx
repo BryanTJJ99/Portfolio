@@ -11,7 +11,7 @@ export default function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSplash(false);
-    }, 300); // Splash screen will be visible for 3 seconds
+    }, 700); // Splash screen will be visible for 0.5 seconds
 
     return () => clearTimeout(timer); // Clean up the timer on component unmount
   }, []);

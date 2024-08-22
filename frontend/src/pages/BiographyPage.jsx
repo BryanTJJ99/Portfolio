@@ -13,7 +13,7 @@ function BiographyPage() {
 
         <div className="text-gray-700">
           <p>
-          I’m a graduate student in the Accelerated Master’s Program between Singapore Management University (SMU) and Carnegie Mellon University (CMU), pursuing a Master’s in Information Systems Management at the Heinz College of Information Systems and Public Policy.
+          I’m a graduate student in the Accelerated Master’s Program in Carnegie Mellon University (CMU), pursuing a Master’s in Information Systems Management at the Heinz College of Information Systems and Public Policy.
           </p>
           <br />
           <p>

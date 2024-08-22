@@ -10,6 +10,7 @@ function AlbumPage() {
   const [album, setAlbum] = useState(null);
   const [photos, setPhotos] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(false); // State to control fade-in
 
   const { ref: carouselRef, inView: carouselInView } = useInView({ threshold: 0.5 });
   const { ref: titleRef, inView: titleInView } = useInView({ threshold: 0.5 });
@@ -57,24 +58,43 @@ function AlbumPage() {
       try {
         const normalizedAlbumId = albumId.toLowerCase();
         const correctFolderName = albumFolders[normalizedAlbumId];
-
+  
         if (!correctFolderName) {
           console.error(`No folder name found for album ID: ${albumId}`);
           return;
         }
-
+  
         const response = await fetch(`/api/fetchPhoto?folder=${correctFolderName}`);
         const photosData = await response.json();
-
+  
         console.log('Photos API Response:', photosData); // Log the API response
-
+  
         if (response.ok && Array.isArray(photosData)) {
-          const mappedPhotos = photosData.map((file, index) => ({
-            id: index,
-            src: file.src,
-            title: file.title,
-          }));
-          setPhotos(mappedPhotos);
+          const mappedPhotos = await Promise.allSettled(
+            photosData.map(async (file, index) => {
+              const img = new Image();
+              img.src = file.src;
+  
+              await new Promise((resolve, reject) => {
+                img.onload = resolve;
+                img.onerror = reject;
+              });
+  
+              return {
+                id: index,
+                src: file.src,
+                title: file.title,
+              };
+            })
+          );
+  
+          // Filter out failed image loads
+          const successfulPhotos = mappedPhotos
+            .filter(result => result.status === 'fulfilled')
+            .map(result => result.value);
+  
+          setPhotos(successfulPhotos);
+          setIsVisible(true); // Set visibility to true after loading
         } else {
           console.error(`Error: Expected an array but got ${typeof photosData}`);
         }
@@ -82,9 +102,10 @@ function AlbumPage() {
         console.error('Error fetching photos:', error);
       }
     }
-
+  
     fetchPhotos();
   }, [albumId]);
+  
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -106,14 +127,14 @@ function AlbumPage() {
   };
 
   if (!album || !Array.isArray(photos) || photos.length === 0) {
-    return <div>Loading...</div>;
+    return <div className='transition-opacity duration-500 opacity-100'>Loading...</div>;
   }
 
   return (
     <>
       <div
         ref={carouselRef}
-        className={`flex flex-col items-center transition-opacity duration-500 ${carouselInView ? 'opacity-100' : 'opacity-30'}`}
+        className={`flex flex-col items-center transition-opacity duration-500 ${carouselInView ? 'opacity-100' : 'opacity-30'} ${isVisible ? 'opacity-100' : 'opacity-0'}`}
       >
         <ImageCarousel photos={photos} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
         <hr className="w-11/12 border-gray-800 mt-10" />
@@ -130,7 +151,7 @@ function AlbumPage() {
         ref={gridRef}
         className={`flex flex-col items-center transition-opacity duration-500 ${gridInView ? 'opacity-100' : 'opacity-30'}`}
       >
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 p-6">
+        <div className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 p-6 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           {photos.map((photo, index) => (
             <div
               key={photo.id}
