@@ -1,6 +1,7 @@
 import React from 'react';
 import ProfilePhoto from '/ProfilePhoto.jpg';
 import TimeLine from '@/components/TimeLine';
+import FadeInViewAnimation from '@/animations/FadeInViewAnimation';
 
 function BiographyPage() {
   return (
@@ -13,7 +14,7 @@ function BiographyPage() {
 
         <div className="text-gray-700">
           <p>
-          I’m a graduate student in the Accelerated Master’s Program in Carnegie Mellon University (CMU), pursuing a Master’s in Information Systems Management at the Heinz College of Information Systems and Public Policy.
+          I’m a graduate student in the Accelerated Master’s Program in Carnegie Mellon University (CMU), pursuing a <a href="https://www.heinz.cmu.edu/programs/information-systems-management-master/" target="_blank" rel="noopener noreferrer" className="font-bold hover:underline">Master’s in Information Systems Management</a> at the Heinz College of Information Systems and Public Policy.
           </p>
           <br />
           <p>
@@ -55,7 +56,9 @@ function BiographyPage() {
 
       <div className="mx-auto" style={{ maxWidth: '800px' }}>
       <h1 className="text-xl text-left font-bold mb-5">Work experiences</h1>
+      <FadeInViewAnimation>
         <TimeLine />
+      </FadeInViewAnimation>
       </div>
 
     </div>
