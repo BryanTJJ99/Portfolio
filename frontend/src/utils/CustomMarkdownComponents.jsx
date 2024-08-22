@@ -1,15 +1,15 @@
 import React from 'react';
 
 export const CustomH1 = ({ node, ...props }) => (
-  <h1 className="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 mb-2 text-3xl font-bold" {...props} />
+  <h1 className="text-700 p-4 mb-2 text-3xl font-bold" {...props} />
 );
 
 export const CustomH2 = ({ node, ...props }) => (
-  <h2 className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-2 text-2xl font-semibold" {...props} />
+  <h2 className="border-l-4 borde-500 text-700 p-4 mb-2 text-2xl font-semibold" {...props} />
 );
 
 export const CustomP = ({ node, ...props }) => (
-  <p className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-2 text-base" {...props} />
+  <p className="text-700 pl-4 pr-4 mb-4 text-base" {...props} />
 );
 
 export const CustomCode = ({ node, inline, className, children, ...props }) => {
@@ -55,4 +55,9 @@ export const CustomTh = ({ node, ...props }) => (
 
 export const CustomTd = ({ node, ...props }) => (
   <td className="py-3 px-6 text-left whitespace-nowrap" {...props} />
+);
+
+
+export const CustomImage = ({ node, src, alt, ...props }) => (
+  <img src={src} alt={alt} className="max-w-full h-auto my-4" {...props} />
 );

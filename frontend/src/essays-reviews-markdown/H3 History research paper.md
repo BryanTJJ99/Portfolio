@@ -1,8 +1,8 @@
 
 
-**To what extent was Indonesia’s occupation of East Timor due to economic motivations?**
+# To what extent was Indonesia’s occupation of East Timor due to economic motivations?
 
-_This is a history independent research paper that I submitted back in 2017 under the GCE ADVANCED LEVEL H3 SYLLABUS, focusing on southeast asian geopolitics. You can view my full research paper (with citations) here_
+> This is a history independent research paper that I submitted back in 2017 under the GCE ADVANCED LEVEL H3 SYLLABUS, focusing on Southeast Asian Geopolitics. You can view my full research paper (with citations) here
 
  **Introduction**
 
@@ -87,7 +87,8 @@ In light of this, the economic motivations behind the occupation of East Timor w
 
 Annex A
 
-![C:\\Users\\user\\AppData\\Local\\Microsoft\\Windows\\INetCache\\Content.Word\\SCAN\_20170907\_101552106.jpg][image1]
+![H3 History Source](essays-reviews/H3HistorySource.jpg)
+
 
 Source: Aditjondro, G., *In the shadow of Mount Ramelau* (Leiden: Indonesian Documentation and Information Centre, 1994\)
 
@@ -96,10 +97,12 @@ Source: Aditjondro, G., *In the shadow of Mount Ramelau* (Leiden: Indonesian Do
 **Archival material**
 
 * “Memorandum of Conversation between President Ford and Suharto”, 5 July 1975\. Box 13: National Security Adviser Memoranda of Conversations, Gerald R. Ford Library, USA, accessed June 20, 2017, http://nsarchive2.gwu.edu/NSAEBB/NSAEBB62/doc1.pdf.
+<br><br>
 
 **Foreign Relations of US (FRUS) documents**
 
 * Despatch from the Department of State to the Embassy in Indonesia, September 20,1975, *Foreign relations of the United States, 1969-1976,* Volume E-12, Documents on East and Southeast Asia, 1973-1976, doc.135, accessed August 29, 2017, https://history.state.gov/historicaldocuments/frus1969-76ve12/d135 
+<br><br>
 
 **Books**
 
@@ -125,6 +128,7 @@ Source: Aditjondro, G., *In the shadow of Mount Ramelau* (Leiden: Indonesian Do
 * Wanandi, Jusuf, *Shades Of Grey: A Political Memoir of Modern Indonesia, 1965-1998* (Jakarta: Equinox, 2012).  
 * Weldemichael, Awet Tewelde, *Third World Colonialism And Strategies Of Liberation* (Cambridge: Cambridge University Press, 2013).  
 * Westmoreland, Ken, *A Pretty Unfair Place*. (Great Britain: Lafaek Press, 2009).
+<br><br>
 
 **Journals and articles**
 
@@ -142,6 +146,7 @@ Source: Aditjondro, G., *In the shadow of Mount Ramelau* (Leiden: Indonesian Do
 * The Timor-Leste Commission for Reception, Truth and Reconciliation. “Chega\!”. *Jarkarta KPG in cooperation with STP\_CAVR*, (2013): 170\. Accessed June 6, 2017, http://chegareport.net/Chega%20All%20Volumes.pdf
 
 * Yazid, Mohd. "The Indonesian Economic Development After 1965: Developmental State, Radical Politics & Regional Cooperation". *SOP Transactions On Economic Research 1* (3), (2014): 1-14, DOI:10.15764/ER.2014.03001
+<br><br>
 
 **Websites:**
 

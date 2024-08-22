@@ -1,21 +1,15 @@
 [
     {
-      "id": "link1",
-      "title": "Arte: Interview with Nadav Kander, guest artist for the Portrait(s) Vichy Festival, France",
-      "year": 2024,
-      "type": "Film"
-    },
-    {
-      "id": "link2",
-      "title": "British Journal of Photography: In the Studio",
-      "year": 2023,
-      "type": "Text"
-    },
-    {
       "id": "H3 History research paper",
       "title": "To what extent was Indonesia's occupation of East Timor due to economic motivations?",
       "year": 2017,
-      "type": "Text"
+      "type": "History"
+    },
+    {
+      "id": "Reflection",
+      "title": "My Reflection",
+      "year": 2024,
+      "type": "Reflection"
     }
   ]
   

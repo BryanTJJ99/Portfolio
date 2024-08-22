@@ -7,7 +7,7 @@ import SlideAnimation from '@/animations/SlideAnimation';
 import { Accordion, AccordionContent, AccordionPanel, AccordionTitle } from "flowbite-react";
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
-import { CustomH1, CustomH2, CustomP, CustomCode, CustomBlockquote, CustomListItem, CustomTable, CustomThead, CustomTbody, CustomTr, CustomTh, CustomTd } from '@/utils/CustomMarkdownComponents'; // Ensure this path is correct
+import { CustomH1, CustomH2, CustomP, CustomCode, CustomBlockquote, CustomListItem, CustomTable, CustomThead, CustomTbody, CustomTr, CustomTh, CustomTd, CustomImage } from '@/utils/CustomMarkdownComponents'; // Ensure this path is correct
 
 const markdownFiles = import.meta.glob('/src/essays-reviews-markdown/*.md', { query: '?raw', import: 'default' });
 
@@ -46,6 +46,9 @@ function EssaysReviewsPage() {
     setActiveLink(link);
   };
 
+  // Extract unique types from essaysReviews data
+  const uniqueTypes = ['All', ...new Set(essaysReviews.map(link => link.type))];
+
   const filteredLinks = filter === 'All' ? links : links.filter(link => link.type === filter);
 
   const groupedLinks = filteredLinks.reduce((acc, link) => {
@@ -58,7 +61,7 @@ function EssaysReviewsPage() {
 
   const sortedYears = Object.keys(groupedLinks).sort((a, b) => b - a);
 
-  const categorizedLinks = ['Film', 'Text'].reduce((acc, category) => {
+  const categorizedLinks = uniqueTypes.filter(type => type !== 'All').reduce((acc, category) => {
     acc[category] = links.filter(link => link.type === category);
     return acc;
   }, {});
@@ -111,7 +114,7 @@ function EssaysReviewsPage() {
               >
                 <MenuItems className="absolute left-0 z-10 mt-2 w-56 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                   <div className="py-1">
-                    {['All', 'Film', 'Text'].map((option) => (
+                    {uniqueTypes.map((option) => (
                       <MenuItem key={option} onClick={() => setFilter(option)}>
                         {({ active }) => (
                           <button
@@ -173,6 +176,7 @@ function EssaysReviewsPage() {
               tr: CustomTr,
               th: CustomTh,
               td: CustomTd,
+              img: CustomImage
             }}
           >
             {markdownContent}
