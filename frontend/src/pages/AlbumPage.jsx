@@ -94,7 +94,8 @@ function AlbumPage() {
             .map(result => result.value);
   
           setPhotos(successfulPhotos);
-          setIsVisible(true); // Set visibility to true after loading
+          // setIsVisible(true); // Set visibility to true after loading
+          setTimeout(() => setIsVisible(true), 100);
         } else {
           console.error(`Error: Expected an array but got ${typeof photosData}`);
         }
