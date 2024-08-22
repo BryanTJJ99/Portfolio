@@ -10,7 +10,7 @@ function ContactPage() {
         <div className="hidden md:block p-4">
           <img
             className="object-cover w-full h-full"
-            src="https://dl.dropboxusercontent.com/scl/fi/fiafceauzlwne3h5gf490/DSC06632.jpg?rlkey=6bufekmugcny1twkkvbykrere&st=t3lwute3&dl=0"
+            src="/Contacts.png"
             alt="Contact"
           />
         </div>
