@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfilePhoto from '@/assets/images/ProfilePhoto.jpg';
+import ProfilePhoto from '/ProfilePhoto.jpg';
 import TimeLine from '@/components/TimeLine';
 
 function BiographyPage() {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import MachineLearningInProduction from '@/assets/images/tech-projects/MachineLearningInProduction.png';
+import MachineLearningInProduction from '/tech-projects/MachineLearningInProduction.png';
 import TechProjectCard from '@/components/TechProjectCard';
 import projectData from '@/data/tech-projects.json';
 import { Accordion, AccordionPanel, AccordionTitle, AccordionContent } from 'flowbite-react';
@@ -15,7 +15,7 @@ const TechProjectsPage = () => {
     const product = [];
 
     projectData.forEach(project => {
-      if (project.imgSrc === '@/assets/images/tech-projects/MachineLearningInProduction.png') {
+      if (project.imgSrc === '/tech-projects/MachineLearningInProduction.png') {
         project.imgSrc = MachineLearningInProduction;
         project.imgSrcModal = MachineLearningInProduction;
       }
