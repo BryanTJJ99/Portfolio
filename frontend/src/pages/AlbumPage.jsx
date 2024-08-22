@@ -16,20 +16,33 @@ function AlbumPage() {
   const { ref: gridRef, inView: gridInView } = useInView({ threshold: 0.1 });
   const { ref: descriptionRef, inView: descriptionInView } = useInView({ threshold: 0.5 });
 
+  // Map of albumId to correct folder names
+  const albumFolders = {
+    seattle: 'Seattle',
+    canada: 'Canada',
+    cleveland: 'Cleveland',
+    dc: 'DC',
+    ohiopyle: 'Ohiopyle',
+    pittsburgh: 'Pittsburgh',
+  };
+
   useEffect(() => {
-    const patterns = [
-      albumId.charAt(0).toUpperCase() + albumId.slice(1).toLowerCase(),
-      albumId.toUpperCase(),
-      albumId.toLowerCase(),
-    ];
+    // Normalize albumId to lowercase to match the keys in albumFolders
+    const normalizedAlbumId = albumId.toLowerCase();
+
+    // Get the correct folder name based on the normalizedAlbumId
+    const correctFolderName = albumFolders[normalizedAlbumId];
+
+    if (!correctFolderName) {
+      console.error(`No folder name found for album ID: ${albumId}`);
+      return;
+    }
 
     let albumInfo = null;
 
-    for (const pattern of patterns) {
-      if (photographyData.albums[pattern]) {
-        albumInfo = photographyData.albums[pattern];
-        break;
-      }
+    // Attempt to match the albumId with available album data in photographyData
+    if (photographyData.albums[correctFolderName]) {
+      albumInfo = photographyData.albums[correctFolderName];
     }
 
     if (albumInfo) {
@@ -42,19 +55,28 @@ function AlbumPage() {
   useEffect(() => {
     async function fetchPhotos() {
       try {
-        const response = await fetch(`/api/fetchPhotos?albumId=${albumId}`);
+        const normalizedAlbumId = albumId.toLowerCase();
+        const correctFolderName = albumFolders[normalizedAlbumId];
+
+        if (!correctFolderName) {
+          console.error(`No folder name found for album ID: ${albumId}`);
+          return;
+        }
+
+        const response = await fetch(`/api/fetchPhoto?folder=${correctFolderName}`);
         const photosData = await response.json();
 
-        console.log('Photos API Response:', photosData);
+        console.log('Photos API Response:', photosData); // Log the API response
 
-        if (response.ok) {
-          if (Array.isArray(photosData)) {
-            setPhotos(photosData);  // Set photos directly if it's an array
-          } else {
-            console.error(`Expected array but received ${typeof photosData}`);
-          }
+        if (response.ok && Array.isArray(photosData)) {
+          const mappedPhotos = photosData.map((file, index) => ({
+            id: index,
+            src: file.src,
+            title: file.title,
+          }));
+          setPhotos(mappedPhotos);
         } else {
-          console.error(`Error fetching photos: ${photosData.error || 'Unknown error'}`);
+          console.error(`Error: Expected an array but got ${typeof photosData}`);
         }
       } catch (error) {
         console.error('Error fetching photos:', error);
@@ -114,7 +136,6 @@ function AlbumPage() {
               key={photo.id}
               className="relative w-full"
             >
-              {/* Aspect Ratio Box */}
               <div className="aspect-w-1 aspect-h-1">
                 <img
                   src={photo.src}
