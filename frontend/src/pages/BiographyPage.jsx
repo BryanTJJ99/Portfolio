@@ -6,7 +6,7 @@ import FadeInViewAnimation from '@/animations/FadeInViewAnimation';
 function BiographyPage() {
   return (
     <div>
-      <h1 className="text-2xl font-bold text-center">"I'm ready, I'm ready... to have fun!" — SpongeBob SquarePants</h1>
+      <h1 className="text-2xl font-bold text-center">Creativity is intelligence having fun</h1>
 
       <div className="flex flex-col md:flex-row items-center space-x-5 mx-auto p-10" style={{ maxWidth: '800px' }}>
         {/* Add the profile photo */}
