@@ -12,7 +12,7 @@ export default function TimeLine() {
 
         <Timeline.Body className="-translate-y-1.5">
           <Typography color="default" className="font-bold">
-            Product Led Growth Intern, Workato
+            Product Led Growth Intern, <a href="https://www.workato.com/" className="font-bold hover:underline text-blue-800">Workato</a>
           </Typography>
 
           <Typography color="default" className="text-xs">
@@ -45,7 +45,7 @@ export default function TimeLine() {
 
         <Timeline.Body className="-translate-y-1.5">
           <Typography color="default" className="font-bold">
-              Cross Border Acceleration & Innovation Intern, XNode 创极无限
+              Cross Border Acceleration & Innovation Intern, <a href="https://www.thexnode.com/" className="font-bold hover:underline text-blue-800">XNode 创极无限</a>
             </Typography>
 
             <Typography color="default" className="text-xs">
@@ -71,7 +71,7 @@ export default function TimeLine() {
 
         <Timeline.Body className="-translate-y-1.5">
           <Typography color="default" className="font-bold">
-              Data Engineer Intern, Unravel Carbon (Y-Combinator W22)
+              Data Engineer Intern, <a href="https://www.unravelcarbon.com/" className="font-bold hover:underline text-blue-800">Unravel Carbon (Y-Combinator W22)</a>
             </Typography>
 
             <Typography color="default" className="text-xs">
