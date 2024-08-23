@@ -41,7 +41,7 @@
     "category": "Software & Data Engineering",
     "imgSrc": "/tech-projects/ESD.png",
     "title": "Microservices Architecture - SecondChance Recycling System",
-    "projectLink": "",
+    "projectLink": "https://github.com/BryanTJJ99/ESD_G2T6_SecondChance",
     "description": "Built a full-stack app using microservices architecture. Titled SecondChance, the resource management platform aims to track and reuse existing resources, reducing costs and promoting circular economy while quantifying carbon emissions reduction.",
     "icons": ["FaDocker", "FaFlask", "SiRabbitmq", "FaVuejs", "SiMongodb"]
   },
