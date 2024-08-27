@@ -9,7 +9,7 @@ function PhotographyWorksPage() {
   useEffect(() => {
     async function fetchAlbums() {
       try {
-        const albumFolders = ['Seattle', 'Canada', 'Cleveland', 'DC', 'Ohiopyle', 'Pittsburgh'];
+        const albumFolders = ['Pittsburgh', 'Seattle', 'Canada', 'Cleveland', 'DC', 'Ohiopyle'];
 
         const albumsData = await Promise.all(albumFolders.map(async (folder) => {
           const response = await fetch(`/api/fetchAlbums?folder=${folder}`);
