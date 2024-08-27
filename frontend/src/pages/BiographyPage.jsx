@@ -18,7 +18,7 @@ function BiographyPage() {
           </p>
           <br />
           <p>
-          I am also a recipient of the IMDA Singapore Digital Scholarship. You can download my latest CV here.
+          I am also a recipient of the IMDA Singapore Digital Scholarship. You can here my latest CV <a href="https://drive.google.com/file/d/1hOt7NF6WB6inqllt-MEu0K6ARX9WwImj/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="font-bold hover:underline">here</a>.
           </p>
           <br />
           <p>
