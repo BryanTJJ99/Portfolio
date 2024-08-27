@@ -22,7 +22,7 @@ function BiographyPage() {
           </p>
           <br />
           <p>
-          Outside of work, I am an amateur street photographer with a passion for capturing the essence of urban life. My approach to visual storytelling is inspired by the works of Humans of New York and the Magnum Photos collective.
+          Outside of work, I am an <a href='/photography-works' rel="noopener noreferrer" className="font-bold hover:underline">amateur street photographer</a> with a passion for capturing the essence of urban life. My approach to visual storytelling is inspired by the works of Humans of New York and the Magnum Photos collective.
           </p>
         </div>
       </div>
