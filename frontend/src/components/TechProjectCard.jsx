@@ -65,13 +65,13 @@ function TechProjectCard({ imgSrc, imgSrcModal, title, projectLink, description,
               leaveFrom="opacity-100 transform scale-100"
               leaveTo="opacity-0 transform scale-95"
             >
-              <DialogPanel className="w-full max-w-lg rounded-xl bg-white p-6 overflow-auto">
+              <DialogPanel className="w-full max-w-2xl rounded-xl bg-white p-6 overflow-auto max-h-[calc(100vh-35px)]">
                 <DialogTitle as="h1" className="text-base font-medium">
                   Description
                 </DialogTitle>
-                <p className="my-2">
+                <p className="my-2 text-sm md:text-base">
                   {description}
-                  <img src={imgSrcModal} className="w-full max-w-full h-auto mx-auto my-4" /> {/* Responsive image */}
+                  <img src={imgSrcModal} className="w-full max-w-full h-auto mx-auto my-4" />
                 </p>
 
                 <DialogTitle as="h1" className="text-base font-medium mt-6">
