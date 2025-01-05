@@ -28,15 +28,18 @@ export default function NavBar() {
     };
   }, []);
 
-  const handleLinkClick = (link, event) => {
-    event.preventDefault();  // Prevent the default link behavior
+  const handleLinkClick = (link, event, close) => {
+    event.preventDefault(); // Prevent default link behavior
     setActiveLink(link);
     navigate(link);
+
+    // Close the menu after clicking (only for mobile)
+    if (close) close();
   };
 
   return (
     <Disclosure as="nav" className="bg-white sticky top-0 z-40">
-      {({ open }) => (
+      {({ open, close }) => (
         <>
           <div className={`transition-all duration-300 ${shrinkHeader ? 'py-2' : 'py-0'}`}>
             <h1 className={`transition-all duration-300 text-left ${shrinkHeader ? 'text-2xl' : 'text-4xl'} pb-1`}>Bryan Tan</h1>
@@ -135,7 +138,7 @@ export default function NavBar() {
               <div className="space-y-1 pb-3 pt-2">
                 <a
                   href="/biography"
-                  onClick={(e) => handleLinkClick('/biography', e)}
+                  onClick={(e) => handleLinkClick('/biography', e, close)}
                   className={classNames(
                     activeLink === '/biography'
                       ? 'bg-black-50 border-black-500 text-black-700'
@@ -147,7 +150,7 @@ export default function NavBar() {
                 </a>
                 <a
                   href="/photography-works"
-                  onClick={(e) => handleLinkClick('/photography-works', e)}
+                  onClick={(e) => handleLinkClick('/photography-works', e, close)}
                   className={classNames(
                     activeLink.startsWith('/photography-works')
                       ? 'bg-black-50 border-black-500 text-black-700'
@@ -159,7 +162,7 @@ export default function NavBar() {
                 </a>
                 <a
                   href="/essays-reviews"
-                  onClick={(e) => handleLinkClick('/essays-reviews', e)}
+                  onClick={(e) => handleLinkClick('/essays-reviews', e, close)}
                   className={classNames(
                     activeLink === '/essays-reviews'
                       ? 'bg-black-50 border-black-500 text-black-700'
@@ -171,7 +174,7 @@ export default function NavBar() {
                 </a>
                 <a
                   href="/tech-projects"
-                  onClick={(e) => handleLinkClick('/tech-projects', e)}
+                  onClick={(e) => handleLinkClick('/tech-projects', e, close)}
                   className={classNames(
                     activeLink === '/tech-projects'
                       ? 'bg-black-50 border-black-500 text-black-700'
@@ -183,7 +186,7 @@ export default function NavBar() {
                 </a>
                 <a
                   href="/contact"
-                  onClick={(e) => handleLinkClick('/contact', e)}
+                  onClick={(e) => handleLinkClick('/contact', e, close)}
                   className={classNames(
                     activeLink === '/contact'
                       ? 'bg-black-50 border-black-500 text-black-700'
