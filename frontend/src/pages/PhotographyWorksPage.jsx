@@ -12,8 +12,7 @@ function PhotographyWorksPage() {
         const albumFolders = ['Pittsburgh', 'Seattle', 'Canada', 'Cleveland', 'DC', 'Ohiopyle', 'NYC', 'Miami'];
 
         const albumsData = await Promise.all(albumFolders.map(async (folder) => {
-          // const response = await fetch(`/api/fetchAlbums?folder=${folder}`);
-          const response = await fetch(`/api/fetchAlbums?folder=${folder}&cacheBust=${Date.now()}`);
+          const response = await fetch(`/api/fetchAlbums?folder=${folder}`);
           console.log('Response for folder:', folder, response);
           if (!response.ok) {
             console.error(`Error fetching album data: ${response.statusText}`);
