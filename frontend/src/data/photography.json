@@ -29,6 +29,17 @@
           "title": "Pittsburgh",
           "subHeader": "The Steel City.",
           "description": "A photographic journey through Pittsburgh's past and present."
-      }
+      },
+      "NYC": {
+        "title": "New York City",
+        "subHeader": "The city that never sleeps.",
+        "description": "Iconic skyline, vibrant neighborhoods, and cultural heartbeat of the Big Apple."
+    },
+    "Miami": {
+        "title": "Miami, Florida",
+        "subHeader": "Where the sun meets the sea.",
+        "description": "Tropical vibes, stunning beaches."
+    }
+    
   }
 }
