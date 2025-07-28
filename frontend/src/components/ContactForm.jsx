@@ -6,7 +6,7 @@ function ContactPage() {
   return (
     <div className="border-2 border-black rounded-lg p-5 inline-block w-full">
       <p className='text-left text-xl mb-5'>
-        If you happen to stop by the quaint Pittsburgh, feel free to reach out for a coffeechat.
+        Feel free to reach out for a coffeechat :)
       </p>
       <h3 className='text-left font-bold'>Email Address</h3>
       <h3 className='text-left text-xl mb-5'>bryan.tanjiajun@gmail.com</h3>
