@@ -10,7 +10,7 @@ const Footer = () => {
           <a href="#" className="text-gray-700">Email</a> */}
         </div>
         <div className="text-gray-500">
-          &copy; 2024 Bryan Tan
+          &copy; 2025 Bryan Tan
         </div>
       </div>
     </footer>

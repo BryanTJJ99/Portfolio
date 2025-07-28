@@ -16,7 +16,7 @@ export default function TimeLine() {
           </Typography>
 
           <Typography color="default" className="text-xs">
-            May 2024 - Aug 2024 | Mountain View, California, US
+            May 2025 - Present | Mountain View, California, US
           </Typography>
 
           <Typography type="small" className="mt-2 text-foreground">
