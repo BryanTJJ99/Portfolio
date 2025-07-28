@@ -25,6 +25,8 @@ function AlbumPage() {
     dc: 'DC',
     ohiopyle: 'Ohiopyle',
     pittsburgh: 'Pittsburgh',
+    nyc: 'NYC',
+    miami: 'Miami'
   };
 
   useEffect(() => {
