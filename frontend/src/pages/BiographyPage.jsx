@@ -6,23 +6,18 @@ import ProfilePhoto from '/ProfilePhoto.jpg';
 function BiographyPage() {
   return (
     <div>
-      <h1 className="text-2xl font-bold text-center">Creativity is intelligence having fun</h1>
+      <h1 className="text-2xl font-bold text-center">Curiosity in Motion</h1>
 
       <div className="flex flex-col md:flex-row items-center space-x-5 mx-auto p-10" style={{ maxWidth: '800px' }}>
-        {/* Add the profile photo */}
-        <img src={ProfilePhoto} alt="Profile" className="mb-5 md:mb-0" style={{ width: '325px', borderRadius: '25%' }}/>
+        <img src={ProfilePhoto} alt="Profile" className="mb-5 md:mb-0" style={{ width: '325px', borderRadius: '25%' }} />
 
         <div className="text-gray-700">
           <p>
-          I’m a graduate student in the Accelerated Master’s Program in Carnegie Mellon University (CMU), pursuing a <a href="https://www.heinz.cmu.edu/programs/information-systems-management-master/" target="_blank" rel="noopener noreferrer" className="font-bold hover:underline">Master’s in Information Systems Management</a> at the Heinz College of Information Systems and Public Policy. I also serve as the current Masters Student Liaison for the CMU Singapore Students’ Association.
+            I’m currently in the Accelerated Master’s Program at Carnegie Mellon University (CMU), where I’m pursuing a <a href="https://www.heinz.cmu.edu/programs/information-systems-management-master/" target="_blank" rel="noopener noreferrer" className="font-bold hover:underline">Master’s in Information Systems Management</a> at Heinz College. I also serve as the Masters Student Liaison for the CMU Singapore Students’ Association.
           </p>
           <br />
           <p>
-          Additionally, I am a recipient of the IMDA Singapore Digital Scholarship. You can view my latest CV <a href="https://drive.google.com/file/d/1KPzhklhOkd35qksxB8moKyMey90EYqVt/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="font-bold hover:underline">here</a>.
-          </p>
-          <br />
-          <p>
-          Outside of work, I am an <a href='/photography-works' rel="noopener noreferrer" className="font-bold hover:underline">amateur street photographer</a> with a passion for capturing the essence of urban life. My approach to visual storytelling is inspired by the works of Humans of New York and the Magnum Photos collective.
+            Outside the classroom, I find joy in <a href="/photography-works" rel="noopener noreferrer" className="font-bold hover:underline">street photography</a>, capturing unfiltered, human moments in urban spaces. My visual storytelling is inspired by the likes of Humans of New York and Magnum Photos, grounded in the belief that every frame holds a story worth telling.
           </p>
         </div>
       </div>
@@ -30,24 +25,31 @@ function BiographyPage() {
       <hr className="my-8 border-gray-300 mx-auto" style={{ maxWidth: '800px' }} />
 
       <div className="text-left mt-11 mx-auto" style={{ maxWidth: '800px' }}>
-  <h1 className="text-xl font-bold mb-5">About Me</h1>
-  <p>
-    Growing up in Singapore, I was always fascinated by how technology, grounded in first-principles thinking, could solve complex problems. When the COVID-19 pandemic disrupted my university experience, I saw it as an opportunity to hit pause after one semester—not as a setback, but as a chance to explore my passions, embrace new experiences, and gain clarity on my path forward.
-  </p>
-  <br />
-  <p>
-    During this break, I volunteered in my grassroots constituency, drafting appeal letters and helping set up an environmental charity. These experiences brought me closer to people, broadening my perspective and helping me see the interconnectedness of past and present. It was during this time that I realized my purpose in tech: to be an enabler, creating value-adding solutions that serve people’s needs.
-  </p>
-  <br />
-  <p>
-    With a renewed sense of purpose, I returned to my studies, focusing on how technology could be harnessed for greater societal impact. This journey led me to pursue a Master’s in Information Systems Management at CMU's Heinz College. Along the way, I sought out diverse and enriching experiences through internships across different countries and cultures. Each role deepened my approach to product development, encouraging me to think critically about both the "how" and the "why" behind every innovation.
-  </p>
-  <br />
-  <p>
-    Every step of my journey—from pausing my studies to embracing community service, to gaining global experience and having a bit of <b>FUN</b> along the way—has been about finding meaning and purpose in the work I do. I’ve learned that the most rewarding challenges are those that push us to grow, adapt, and enjoy the ride. As I continue to build my career, I’m eager to take on new challenges, collaborate with diverse teams, and create products that make a meaningful impact—while also making sure to have fun along the way.
-  </p>
-</div>
-
+        <h1 className="text-xl font-bold mb-5">About Me</h1>
+        <p>
+          In Bartle’s taxonomy of player types—a framework from the world of video games—I’m undoubtedly an Explorer. I’m driven by curiosity and the thrill of discovery, whether it’s diving into technical systems, unpacking human behavior, or mapping out new ideas.
+        </p>
+        <br />
+        <p>
+          I grew up in Singapore, always drawn to how technology could be used to solve real-world problems. When the pandemic disrupted my studies, I took a step back for a semester, not as a retreat, but as a chance to pause, reflect, and reset. That time off turned into one of the most formative chapters of my life.
+        </p>
+        <br />
+        <p>
+          I volunteered in my local community, helping draft appeal letters, assisting in environmental initiatives, and supported the founding of a charity. These moments grounded me in empathy and reminded me of the very human stories behind every system we build.
+        </p>
+        <br />
+        <p>
+          Returning to school with renewed purpose, I began focusing on how thoughtful design, systems thinking, and technology could come together to drive positive change. That journey led me to CMU, where I’ve since pursued interdisciplinary opportunities, internships across different countries, work that spans research and engineering, and collaborations with people far outside my own perspective.
+        </p>
+        <br />
+        <p>
+          As a human-centered engineer trained on both technical foundations and the art of storytelling, I aim to bridge logic with empathy. I don’t just build solutions, I strive to build experiences that invite users into intuitive, meaningful journeys.
+        </p>
+        <br />
+        <p>
+          Every step along the way, from taking a pause, to saying yes to the unexpected, to traveling and learning alongside diverse teams, has shaped how I approach the world. I’m excited for what’s next, and I hope to continue exploring new problems, new people, and new ways of creating value.
+        </p>
+      </div>
 
 
       <hr className="my-8 border-gray-300 mx-auto" style={{ maxWidth: '800px' }} />
